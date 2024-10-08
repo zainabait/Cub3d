@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcing_map.c                                      :+:      :+:    :+:   */
+/*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:32:30 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/05 12:39:49 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/08 16:27:49 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,17 @@ void	process_texture(char **texture, char *file, char *prefix)
 	char	*tmp;
 	char	*line;
 	size_t	len;
+	int		i;
 
+	i = 0;
 	len = ft_strlen(file) - ft_strlen(prefix);
 	tmp = ft_substr(file, ft_strlen(prefix), len);
+	while (tmp[i])
+	{
+		if (tmp[i] == '\t')
+			ft_error_message("Error: Invalid texture!!");
+		i++;
+	}
 	line = ft_strtrim(tmp, " ");
 	*texture = ft_strdup(line);
 }
@@ -61,7 +69,7 @@ void	get_color(t_data *args, char **file, int *i)
 	char	*line;
 	int		a;
 
-	1 && (tmp2 = NULL, k = 1, a = 0);
+	1 && (tmp2 = NULL, k = 0, a = 0);
 	line = ft_strtrim(file[*i], " ");
 	if (line[0] == 'F' || line[0] == 'C')
 		k++;
@@ -94,6 +102,8 @@ void	get_data(t_data *args, char **file, int *r)
 		else if (!ft_strncmp(file[i], "F ", 2) || \
 			!ft_strncmp(file[i], "C ", 2))
 			1 && (get_color(args, file, &i), count++);
+		else
+			ft_error_message("Error: Invalid line!!");
 		i++;
 		*r = i;
 		if (count == 6)
