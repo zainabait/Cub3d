@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 21:38:11 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/05 12:15:22 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/11 15:10:40 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/11 15:11:25 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -78,6 +78,8 @@ void	check_elements(t_data *args);
 void	assign_color(t_data *args, char *line, char **tmp2);
 void	is_num(char *str);
 void	check_map_round_byones(t_data *args);
+void	ivalid_lelement(char *str);
+void	rep_spaseses_to_ones(t_data *args);
 
 /*-----------garbege collecter---------------*/
 t_data	*get_cub(t_data *cub);

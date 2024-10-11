@@ -6,22 +6,20 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:15 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/08 16:27:20 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/11 18:38:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	main( int ac, char **av)
+void	ft_parcing(char **av)
 {
 	t_data	args;
 	char	**file;
 	int		i;
 
-	get_cub(&args);
 	1 && (i = 0, args.heap = NULL);
-	if (ac != 2)
-		ft_error_message("Error : Invalid number of arguments!!");
+	get_cub(&args);
 	check_file_isvalid(av[1]);
 	file = ft_read_map(av[1]);
 	if (!file[0])
@@ -32,6 +30,14 @@ int	main( int ac, char **av)
 	check_map(file + i, &args);
 	check_map_round_byones(&args);
 	check_elements(&args);
+	rep_spaseses_to_ones(&args);
 	clearheap(&args.heap);
+}
+
+int	main(int ac, char **av)
+{
+	if (ac != 2)
+		ft_error_message("Error : Invalid number of arguments!!");
+	ft_parcing(av);
 	return (0);
 }

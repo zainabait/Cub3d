@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map3.c                                     :+:      :+:    :+:   */
+/*   parsing_map3_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 20:42:24 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/11 18:12:58 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/11 15:40:53 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/11 18:38:06 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "cub_bonus.h"
 
 void	is_num(char *str)
 {
@@ -55,9 +55,10 @@ static void	check_valid_map(t_data *args)
 		while (args->map[i][j])
 		{
 			if (args->map[i][j] != '1' && args->map[i][j] != '0' \
-				&& args->map[i][j] != 'N' \
+				&& args->map[i][j] != '2' && args->map[i][j] != 'N' \
 				&& args->map[i][j] != 'S' && args->map[i][j] != 'W' \
-				&& args->map[i][j] != 'E' && args->map[i][j] != ' ')
+				&& args->map[i][j] != 'E' && args->map[i][j] != ' ' \
+				&& args->map[i][j] != 'D')
 			{
 				ft_error_message("Error: Invalid map!!");
 			}
