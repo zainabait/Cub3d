@@ -6,13 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:08:10 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/12 15:22:52 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/12 17:01:34 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdlib.h>
-#include <math.h>
 
 char map[10][14] = {
 	{'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
@@ -82,11 +80,11 @@ void bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub,
     }
 }
 
-t_intex	find_vertical_intersection(t_cube *cube, double angle)
+t_inter	find_vertical_intersection(t_cube *cube, double angle)
 {
-	t_intex first_touch;
-	t_intex next_step;
-	t_intex check;
+	t_inter first_touch;
+	t_inter next_step;
+	t_inter check;
 
 	angle = remainder(angle, 2 * M_PI);
 	if (angle < 0)
@@ -117,11 +115,11 @@ t_intex	find_vertical_intersection(t_cube *cube, double angle)
 	return (check);
 }
 
-t_intex	find_horizontal_intersection(t_cube *cube, double angle)
+t_inter	find_horizontal_intersection(t_cube *cube, double angle)
 {
-	t_intex first_touch;
-	t_intex next_step;
-	t_intex check;
+	t_inter first_touch;
+	t_inter next_step;
+	t_inter check;
 
 	angle = remainder(angle, 2 * M_PI);
 	if (angle < 0)
@@ -176,7 +174,7 @@ void	initialize_position(char map[10][14], double *x, double*y)
 	}
 }
 
-void	calculate_closest_ray(t_intex ch, t_intex cv, t_cube *cube)
+void	calculate_closest_ray(t_inter ch, t_inter cv, t_cube *cube)
 {
 	double h_dis;
 	double v_dis;
@@ -277,8 +275,8 @@ void	render_3d(void *param)
 	int x;	
 	x = -1;
 	double ray = cube->player->angle - (FOV_ANGLE / 2);
-	t_intex ch;
-	t_intex cv;
+	t_inter ch;
+	t_inter cv;
 	mlx_delete_image(cube->mlx, cube->image);
 	cube->image = mlx_new_image(cube->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx_image_to_window(cube->mlx, cube->image, 0, 0);
@@ -345,7 +343,7 @@ int main()
 {
 	t_cube		*cube;
 	t_player	*player;
-	t_intex		hit;
+	t_inter		hit;
 
 	cube = malloc(sizeof(t_cube));
 	player = malloc(sizeof(t_player));
