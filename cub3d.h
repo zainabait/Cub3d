@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:08:24 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/08 21:49:25 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:39:53 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct intex
 {
 	double x;
 	double y;
+	double dist;
+	bool	ver_hit;
 }	t_intex;
 
 typedef struct player
