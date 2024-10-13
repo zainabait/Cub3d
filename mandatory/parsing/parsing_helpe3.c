@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:35:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:42 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:58 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 static int	create_trgb(int t, int r, int g, int b)
 {

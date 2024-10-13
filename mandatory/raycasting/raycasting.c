@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:25:27 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 13:19:58 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:21 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 t_inter	find_vertical_intersection(t_cube *cube, double angle)
 {

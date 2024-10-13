@@ -6,7 +6,7 @@
 #    By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 11:54:09 by zait-bel          #+#    #+#              #
-#    Updated: 2024/10/13 14:56:02 by zait-bel         ###   ########.fr        #
+#    Updated: 2024/10/13 15:43:37 by zait-bel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,51 +22,31 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/raycasting/utils.c \
 						  ./mandatory/parsing/get_next_line.c \
 						  ./mandatory/parsing/get_next_line_utils.c \
-						  ./mandatory/parsing/parsing_read_map.c \
-						  ./mandatory/parsing/ft_pars \
-						  ./mandatory/parsing/parsing_helpe1.c \
-						  ./mandatory/parsing/parsing_helpe2.c \
-						  ./mandatory/parsing/parsing_map.c \
-						  ./mandatory/parsing/parsing_map1.c \
-						  ./mandatory/parsing/parsing_map2.c \
+                          ./mandatory/parsing/parsing_read_map.c \
+                          ./mandatory/parsing/ft_pars.c \
+                          ./mandatory/parsing/parsing_helpe1.c \
+                          ./mandatory/parsing/parsing_helpe2.c \
+                          ./mandatory/parsing/parsing_map.c \
+                          ./mandatory/parsing/parsing_map1.c \
+                          ./mandatory/parsing/parsing_map2.c \
 						  ./mandatory/parsing/parsing_map3.c \
 						  ./mandatory/parsing/parsing_helpe3.c \
-						  ./mandatory/parsing/mohilloc.c \
+						  ./mandatory/parsing/mohilloc.c 
 OBJS					= $(SRCS:.c=.o)
 
-BONUS					= ./bonus/parsing/get_next_line_bonus.c \
-						  ./bonus/parsing/get_next_line_utils_bonus.c \
-						  ./bonus/parsing/parsing_read_map_bonus.c \
-						  ./bonus/parsing/main_bonus.c \
-						  ./bonus/parsing/parsing_helpe1_bonus.c \
-						  ./bonus/parsing/parsing_helpe2_bonus.c \
-						  ./bonus/parsing/parsing_map_bonus.c \
-						  ./bonus/parsing/parsing_map1_bonus.c \
-						  ./bonus/parsing/parsing_map2_bonus.c \
-						  ./bonus/parsing/parsing_map3_bonus.c \
-						  ./bonus/parsing/parsing_helpe3_bonus.c \
-						  ./bonus/parsing/mohilloc_bonus.c
-OBJCS_BONUS				= $(BONUS:.c=.o)
+all: $(NAME)
 
-all                     :$(NAME)
+$(NAME): $(OBJS)
+	@echo "\033[1;32mLinking $(NAME)...\033[0;m"
+	$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) -o $(NAME)
 
-$(NAME)					:$(OBJS)
-								$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) -o $(NAME)
-
-bonus                   : $(BONUS)
-								$(CC) $(FLAGS) libmlx42.a -Iinclude -lglfwt $(BONUS) -o $(NAME_BONUS)
-
-mandatory/%.o   : mandatory/%.c  mandatory/includes/cub.h
-							@echo "\033[0;34mCompiling $<.\033[0;m"
-							$(CC) $(FLAGS) -c $< -o $@
-
-bonus/parsing/%.o       : bonus/parsing/%.c bonus/parsing/cub_bonus.h
-							@echo "\033[0;34mCompiling $<.\033[0;m"
-							$(CC) $(FLAGS) -c $< -o $@
+%.o: %.c
+	@echo "\033[0;34mCompiling $<...\033[0;m"
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean                   :
 						 @echo "\033[0;31mRemoving object files.\033[0;m"
-						 rm -f $(OBJS) $(OBJCS_BONUS)
+						 rm -f $(OBJS)
 						 @echo "\033[1;32mCleaning DONE ✅\033[0;m"
 
 
@@ -91,7 +71,7 @@ launch					:
 						 @echo "$(COL_TITLE)by: $(COL_CUBE)zait-bel                   $(COL_TITLE)   &&                      $(COL_CUBE)mohimi"	
 fclean                  : clean
 						 @echo "\033[0;31mRemoving object files.\033[0;m"
-						 rm -f $(NAME) $(NAME_BONUS)
+						 rm -f $(NAME)
 						 @echo "\033[1;32mCleaning DONE ✅\033[0;m"
 
 re                      : fclean all

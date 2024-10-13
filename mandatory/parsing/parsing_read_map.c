@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:58:30 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:58 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:47:19 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	check_file_isvalid(char *file)
 {

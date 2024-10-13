@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:51:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:34 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:52 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

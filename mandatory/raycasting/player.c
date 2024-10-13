@@ -6,16 +6,16 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:20:57 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 13:20:32 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:56:25 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	initialize_position(t_data *data, double *x, double *y)
 {
 	int	j;
-	int	i;
+	size_t	i;
 
 	j = 0;
 	while (j < data->height)

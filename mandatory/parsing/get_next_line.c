@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:05:13 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:26:07 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:45 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	ivalid_lelement(char *str)
 {

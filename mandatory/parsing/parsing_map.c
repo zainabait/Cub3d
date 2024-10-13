@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:32:30 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:44 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:47:01 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	ft_count_comma(char *line)
 {

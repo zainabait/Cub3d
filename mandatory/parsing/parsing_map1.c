@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:19:13 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:47 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:47:06 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	first_last_char(t_data *args)
 {

@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:01:05 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:37 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:56 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	ft_free_leak(char **str)
 {

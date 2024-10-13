@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:08:10 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 13:19:26 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:54:20 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 int	main(int ac, char **av)
 {
@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 	t_player	*player;
 	t_inter		hit;
 
+	if (ac != 2)
+		ft_error_message("num of args isn't correct.Usage: ./cub3D <map_file>");
 	cube = malloc(sizeof(t_cube));
 	player = malloc(sizeof(t_player));
 	cube->data = ft_parsing(av);

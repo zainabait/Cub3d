@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:26:56 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:27:51 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:47:10 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	check_first_line(char *line)
 {

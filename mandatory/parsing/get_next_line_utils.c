@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:02:52 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 12:25:54 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:42 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 size_t	ft_strlen(const char *str)
 {

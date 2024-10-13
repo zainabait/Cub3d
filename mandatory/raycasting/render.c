@@ -6,11 +6,11 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 13:21:31 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:46:26 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	render_3d(void *param)
 {
