@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 15:46:26 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 16:39:13 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,15 @@ void	render_wall(t_cube *cube, double x, double ray)
 void render_minimap(void* param)
 {
 	t_cube *cube = param;
-    int i, j;
+    int j;
     int x, y;
+	size_t i;
 	j = 0;
 
-    while (j < 10)
+    while (j < cube->data->height)
     {
 		i = 0;
-        while (i < 14)
+        while (i < cube->data->width)
         {
             y = 0;
             while (y < TILE_SIZE / 5 - 1)

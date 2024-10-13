@@ -6,16 +6,16 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:26:29 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 15:46:32 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 16:39:36 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-bool	is_wall(int x, int y, t_cube *cub)
+bool	is_wall(size_t x, int y, t_cube *cub)
 {
 	(void)cub;
-	if (x < 0 || x > 14 * TILE_SIZE || y < 0 || y > 10 * TILE_SIZE)
+	if (x < 0 || x > cub->data->width * TILE_SIZE || y < 0 || y > cub->data->height * TILE_SIZE)
 		return (1);
 	if (cub->data->map[y / TILE_SIZE][x / TILE_SIZE] == '1')
 		return (1);
