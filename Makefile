@@ -1,17 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/13 11:54:09 by zait-bel          #+#    #+#              #
-#    Updated: 2024/10/13 15:43:37 by zait-bel         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC 						= cc 
-FLAGS                   = -Wall -Wextra -Werror -Imlx -fsanitize=address -g
+FLAGS                   = -Wall -Wextra -Werror -Imlx -Ofast -fsanitize=address -g
 NAME					= cub3D
 NAME_BONUS			    = cub3D_bonus
 
@@ -34,19 +22,42 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/parsing/mohilloc.c 
 OBJS					= $(SRCS:.c=.o)
 
-all: $(NAME)
+BONUS					= ./bonus/parsing/get_next_line_bonus.c \
+						  ./bonus/parsing/get_next_line_utils_bonus.c \
+						  ./bonus/parsing/parsing_read_map_bonus.c \
+						  ./bonus/parsing/main_bonus.c \
+						  ./bonus/parsing/parsing_helpe1_bonus.c \
+						  ./bonus/parsing/parsing_helpe2_bonus.c \
+						  ./bonus/parsing/parsing_map_bonus.c \
+						  ./bonus/parsing/parsing_map1_bonus.c \
+						  ./bonus/parsing/parsing_map2_bonus.c \
+						  ./bonus/parsing/parsing_map3_bonus.c \
+						  ./bonus/parsing/parsing_helpe3_bonus.c \
+						  ./bonus/parsing/mohilloc_bonus.c
+OBJCS_BONUS				= $(BONUS:.c=.o)
 
-$(NAME): $(OBJS)
-	@echo "\033[1;32mLinking $(NAME)...\033[0;m"
-	$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) -o $(NAME)
+all						: $(NAME)
 
-%.o: %.c
-	@echo "\033[0;34mCompiling $<...\033[0;m"
-	$(CC) $(FLAGS) -c $< -o $@
+$(NAME)					: $(OBJS)
+						  @echo "\033[1;32mLinking $(NAME)...\033[0;m"
+						  $(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) -o $(NAME)
+
+bonus					: $(OBJCS_BONUS)
+						  @echo "\033[1;32mLinking $(NAME_BONUS)...\033[0;m"
+						  $(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJCS_BONUS) -o $(NAME_BONUS)
+
+
+mandatory/%.o						: mandatory/%.c mandatory/includes/cub.h
+						  @echo "\033[0;34mCompiling $<...\033[0;m"
+						  $(CC) $(FLAGS) -c $< -o $@
+
+%.o						: %.c includes/cub_bonus.h 
+						  @echo "\033[0;34mCompiling $<...\033[0;m"
+						  $(CC) $(FLAGS) -c $< -o $@
 
 clean                   :
 						 @echo "\033[0;31mRemoving object files.\033[0;m"
-						 rm -f $(OBJS)
+						 rm -f $(OBJS) $(OBJCS_BONUS)
 						 @echo "\033[1;32mCleaning DONE ✅\033[0;m"
 
 
@@ -71,7 +82,7 @@ launch					:
 						 @echo "$(COL_TITLE)by: $(COL_CUBE)zait-bel                   $(COL_TITLE)   &&                      $(COL_CUBE)mohimi"	
 fclean                  : clean
 						 @echo "\033[0;31mRemoving object files.\033[0;m"
-						 rm -f $(NAME)
+						 rm -f $(NAME) $(NAME_BONUS)
 						 @echo "\033[1;32mCleaning DONE ✅\033[0;m"
 
 re                      : fclean all

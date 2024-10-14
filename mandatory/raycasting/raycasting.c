@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omghazi <omghazi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:25:27 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 16:36:27 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 23:21:31 by omghazi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_inter	find_vertical_intersection(t_cube *cube, double angle)
 	t_inter	first_touch;
 	t_inter	next_step;
 	t_inter	check;
+	size_t	t;
 
 	angle = remainder(angle, 2 * M_PI);
 	if (angle < 0)
@@ -37,9 +38,10 @@ t_inter	find_vertical_intersection(t_cube *cube, double angle)
 	check.y = first_touch.y;
 	while (!(check.x < 0 || check.x > cube->data->width * TILE_SIZE || check.y < 0 || check.y > cube->data->height * TILE_SIZE))
 	{
-		if (angle > M_PI * 0.5 && angle < M_PI * 1.5)
-			check.x--;
-		if (is_wall(check.x, check.y, cube))
+		t = check.x;
+		if (angle >= M_PI * 0.5 && angle <= M_PI * 1.5)
+			t = check.x - 1;
+		if (is_wall(t, check.y, cube))
 			break;
 		check.x += next_step.x;
 		check.y += next_step.y;
@@ -52,6 +54,7 @@ t_inter	find_horizontal_intersection(t_cube *cube, double angle)
 	t_inter first_touch;
 	t_inter next_step;
 	t_inter check;
+	int t;
 
 	angle = remainder(angle, 2 * M_PI);
 	if (angle < 0)
@@ -73,9 +76,10 @@ t_inter	find_horizontal_intersection(t_cube *cube, double angle)
 	check = first_touch;
 	while (!(check.x < 0 || check.x > cube->data->width * TILE_SIZE || check.y < 0 || check.y > cube->data->height * TILE_SIZE))
 	{
-		if (angle > M_PI && angle < M_PI * 2)
-			check.y--;
-		if (is_wall(check.x, check.y, cube))
+		t = check.y;
+		if (angle >= M_PI && angle <= M_PI * 2)
+			t = check.y - 1;
+		if (is_wall(check.x, t, cube))
 			break;
 		check.x += next_step.x;
 		check.y += next_step.y;
@@ -91,7 +95,7 @@ void	calculate_closest_ray(t_inter ch, t_inter cv, t_cube *cube)
 	h_dis = sqrt(pow(cube->player->x - ch.x, 2) + pow(cube->player->y - ch.y, 2));
 	v_dis = sqrt(pow(cube->player->x - cv.x, 2) + pow(cube->player->y - cv.y, 2));
 	
-	if (h_dis < v_dis)
+	if (h_dis <= v_dis)
 	{
 		cube->hit->dist = h_dis;
 		cube->hit->x = ch.x;

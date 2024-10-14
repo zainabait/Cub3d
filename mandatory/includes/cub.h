@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omghazi <omghazi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 16:40:12 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 23:01:25 by omghazi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 
 typedef struct intersection
 {
-    double x;
-    double y;
-    double dist;
-    bool    ver_hit;
-}    t_inter;
+    double	x;
+    double	y;
+    double	dist;
+    bool	ver_hit;
+}			t_inter;
 
 typedef struct player
 {
@@ -60,17 +60,32 @@ struct s_heap
 
 typedef struct s_data
 {
-    t_heap    *heap;
-    char    *no;
-    char    *so;
-    char    *we;
-    char    *ea;
-    char    **map;
-    int        f_c;
-    int        c_color;
-    int        height;
-    size_t    width;
-}            t_data;
+    t_heap			*heap;
+    mlx_texture_t*	no_texture;
+    mlx_texture_t*	so_texture;
+    mlx_texture_t*	we_texture;
+    mlx_texture_t*	ea_texture;
+    mlx_image_t*	no_image_texture;
+    mlx_image_t*	so_image_texture;
+    mlx_image_t*	we_image_texture;
+    mlx_image_t*	ea_image_texture;
+    char			*no;
+    char			*so;
+    char			*we;
+    char			*ea;
+    char			**map;
+    int				f_c;
+    int				c_color;
+    int				height;
+    size_t			width;
+    int             wall_x;
+    int             tex_width;
+    int             tex_height;
+    int             texture_x;
+    double          step;
+    double          texture_pos;
+    double          texture_y;
+}					t_data;
 
 // ***************************
 

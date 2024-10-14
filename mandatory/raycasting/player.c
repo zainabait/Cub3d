@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:20:57 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 15:56:25 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:16:19 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void handle_key_input(mlx_key_data_t keydata, void* param)
 	int posx[2];
 	int posy[2];
 
-	// mlx_delete_image(cube->mlx, cube->image);
 	posx[0] = cos(cube->player->angle) * SPEED;
 	posx[1] = cos(cube->player->angle + M_PI / 2) * SPEED;
 	posy[0] = sin(cube->player->angle) * SPEED;
@@ -98,6 +97,4 @@ void handle_key_input(mlx_key_data_t keydata, void* param)
 		else if (keydata.key == MLX_KEY_LEFT)
 			cube->player->angle -= 0.3;
     }
-	cube->image = mlx_new_image(cube->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	render_3d(cube);
 }

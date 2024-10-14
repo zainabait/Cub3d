@@ -3,15 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omghazi <omghazi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 16:39:13 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/13 23:20:44 by omghazi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+uint32_t    get_texture_pixel(mlx_image_t *texture, int x, int y)
+{
+    uint8_t    r;
+    uint8_t    g;
+    uint8_t    b;
+    uint8_t    a;
+    int        index;
 
+    if (!texture)
+        return (0);
+    if (x >= 0 && (uint32_t)x < texture->width
+        && y >= 0 && (uint32_t)y < texture->height)
+    {
+        index = (y * texture->width + x) * 4;
+        r = texture->pixels[index];
+        g = texture->pixels[index + 1];
+        b = texture->pixels[index + 2];
+        a = texture->pixels[index + 3];
+        return (r << 24 | g << 16 | b << 8 | a);
+    }
+    return (0xFFFFFFFF);
+}
 void	render_3d(void *param)
 {
 	t_cube *cube = (t_cube *)param;
@@ -20,16 +41,13 @@ void	render_3d(void *param)
 	double ray = cube->player->angle - (FOV_ANGLE / 2);
 	t_inter ch;
 	t_inter cv;
-	mlx_delete_image(cube->mlx, cube->image);
-	cube->image = mlx_new_image(cube->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	mlx_image_to_window(cube->mlx, cube->image, 0, 0);
+
 	while (++x < SCREEN_WIDTH)
 	{
 		cv = find_vertical_intersection(cube, ray);
 		ch = find_horizontal_intersection(cube, ray);
 		calculate_closest_ray(ch, cv, cube);
 		render_wall(cube, x, ray);
-		// bresenham_line(cube->player->x / 5, cube->player->y / 5, cube->hit->x / 5, cube->hit->y / 5, cube, 502061);
 		ray += FOV_ANGLE / SCREEN_WIDTH;
 	}
 	render_minimap(cube);
@@ -42,18 +60,39 @@ void	render_wall(t_cube *cube, double x, double ray)
 	double	wall_height;
 	int		from_y;	
 	int		to_y;
-	
+
 	distance = cube->hit->dist * cos(cube->player->angle - ray);
 	base_distance = (SCREEN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	wall_height = (TILE_SIZE / distance) * base_distance;
 	from_y = (SCREEN_HEIGHT / 2) - (wall_height / 2);
 	to_y = from_y + wall_height;
-	if (cube->hit->ver_hit)
-		bresenham_line(x, from_y, x, to_y, cube, 0xFFFFFFFF);
+    // cube->data->wall_x = 1;
+	// cube->data->wall_x -= floor(cube->data->wall_x);
+	// cube->data->tex_width = cube->data->no_image_texture->width;
+	// cube->data->tex_height = cube->data->no_image_texture->height;
+	// cube->data->texture_x = (int)(cube->data->wall_x * cube->data->tex_width) % cube->data->tex_width;
+	// cube->data->step = (double)cube->data->tex_height / wall_height;
+	// cube->data->texture_pos = (from_y - (SCREEN_HEIGHT / 2 - wall_height / 2)) * cube->data->step;
+    // current_texture = cube->data->no_image_texture;
+    // int y = from_y;
+	// while (y < to_y)
+	// {
+	// 	cube->data->texture_y = (int)cube->data->texture_pos % cube->data->tex_height;
+	// 	cube->data->texture_pos += cube->data->step;
+	// 	uint32_t color = get_texture_pixel(current_texture, \
+	// 		cube->data->texture_x, cube->data->texture_y);
+	// 	mlx_put_pixel(cube->image, x, y, color);
+	// 	y++;
+	// }
+
+    
+
+	if (!cube->hit->ver_hit)
+		bresenham_line(x, from_y, x, to_y, cube, 0xFFC0CBFF);
 	else
-		bresenham_line(x, from_y, x, to_y, cube, 0xDDDDDDFF);
-	bresenham_line(x, from_y, x, 0, cube, 0x0000FFFF);
-	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, 0x00FF00FF);
+		bresenham_line(x, from_y, x, to_y, cube, 0xb163ffb1);
+	bresenham_line(x, from_y, x, 0, cube, 0x51158c51 );//sky
+	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, 0xffa54fff);//floor
 }
 void render_minimap(void* param)
 {
@@ -86,7 +125,6 @@ void render_minimap(void* param)
         }
 		j++;
     }
-	
 	draw_player(cube);
 }
 void bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color)

@@ -1,8 +1,8 @@
-NO ./images/NO.xpm
+NO textures/tex1.png
+SO textures/tex1.png
+WE textures/tex1.png
+EA textures/tex1.png
 
-SO ./images/SO.xpm
-WE ./images/WE.xpm
-EA ./images/EA.xpm
 F     00,153,15
 C     255,255,255
 
