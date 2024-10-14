@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omghazi <omghazi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/13 23:20:44 by omghazi          ###   ########.fr       */
+/*   Updated: 2024/10/14 17:25:46 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
 uint32_t    get_texture_pixel(mlx_image_t *texture, int x, int y)
 {
     uint8_t    r;
@@ -47,6 +48,9 @@ void	render_3d(void *param)
 		cv = find_vertical_intersection(cube, ray);
 		ch = find_horizontal_intersection(cube, ray);
 		calculate_closest_ray(ch, cv, cube);
+		cube->ray[x].x = cube->hit->x;
+		cube->ray[x].y = cube->hit->y;
+		cube->ray[x].angle = ray;
 		render_wall(cube, x, ray);
 		ray += FOV_ANGLE / SCREEN_WIDTH;
 	}
@@ -125,7 +129,12 @@ void render_minimap(void* param)
         }
 		j++;
     }
+	x =-1;
 	draw_player(cube);
+	while(++x < SCREEN_WIDTH)
+	{
+		bresenham_line(cube->player->x/5, cube->player->y/5, cube->ray[x].x/5, cube->ray[x].y/5, cube, 0xFFFFFFFF);
+	}
 }
 void bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color)
 {
