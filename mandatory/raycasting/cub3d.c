@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:08:10 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/14 18:34:46 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/15 00:03:03 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,20 @@ void	function(void *param)
 
 void	load_textures(t_cube *cube)
 {
-	cube->data->no_texture = mlx_load_png(cube->data->no);
-	if (!cube->data->no_texture)
+	if (!(cube->data->no_texture = mlx_load_png(cube->data->no)))
+		ft_error_message("Error: 'No' texture encountered");
+	// cube->data->so_texture = mlx_load_png(cube->data->so);
+	// if (!cube->data->so_texture)
+	// 	ft_error_message("Error\nSo texture");
+	// cube->data->we_texture = mlx_load_png(cube->data->we);
+	// if (!cube->data->we_texture)
+	// 	ft_error_message("Error\nWe texture");
+	// cube->data->ea_texture = mlx_load_png(cube->data->ea);
+	// if (!cube->data->ea_texture)
+	// 	ft_error_message("Error\nEa texture");
+	if (!(cube->data->no_image_texture = mlx_texture_to_image \
+		(cube->mlx, cube->data->no_texture)))
 		ft_error_message("Error\nNo texture");
-	cube->data->so_texture = mlx_load_png(cube->data->so);
-	if (!cube->data->so_texture)
-		ft_error_message("Error\nSo texture");
-	cube->data->we_texture = mlx_load_png(cube->data->we);
-	if (!cube->data->we_texture)
-		ft_error_message("Error\nWe texture");
-	cube->data->ea_texture = mlx_load_png(cube->data->ea);
-	if (!cube->data->ea_texture)
-		ft_error_message("Error\nEa texture");
-	cube->data->no_image_texture = mlx_texture_to_image \
-		(cube->mlx, cube->data->no_texture);
-	if (!cube->data->no_image_texture)
-		ft_error_message("Error\nEa texture");
 	// cube->data->so_image_texture = mlx_texture_to_image(cube->mlx, cube->data->so_texture);
 	// if (!cube->data->so_image_texture)
 	// 	ft_error_message("Error\nEa texture");

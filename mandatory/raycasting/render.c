@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/14 17:25:46 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/15 02:25:45 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ uint32_t    get_texture_pixel(mlx_image_t *texture, int x, int y)
     int        index;
 
     if (!texture)
-        return (0);
+        return (0xFFFFFFFF);
     if (x >= 0 && (uint32_t)x < texture->width
         && y >= 0 && (uint32_t)y < texture->height)
     {
@@ -57,6 +57,17 @@ void	render_3d(void *param)
 	render_minimap(cube);
 }
 
+// int    get_color(t_data *map, char c)
+// {
+//     if (c == 'c')
+//     {
+//         return ((map->c_color << 24) + \
+//         (map->ceiling_color[1] << 16) + (map->ceiling_color[2] << 8) + 255);
+//     }
+//     return ((map->floor_color[0] << 24) + \
+//     (map->floor_color[1] << 16) + (map->floor_color[2] << 8) + 255);
+// }
+
 void	render_wall(t_cube *cube, double x, double ray)
 {
 	double	distance;
@@ -64,40 +75,52 @@ void	render_wall(t_cube *cube, double x, double ray)
 	double	wall_height;
 	int		from_y;	
 	int		to_y;
+	mlx_image_t *current_texture;
 
 	distance = cube->hit->dist * cos(cube->player->angle - ray);
 	base_distance = (SCREEN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	wall_height = (TILE_SIZE / distance) * base_distance;
 	from_y = (SCREEN_HEIGHT / 2) - (wall_height / 2);
 	to_y = from_y + wall_height;
-    // cube->data->wall_x = 1;
-	// cube->data->wall_x -= floor(cube->data->wall_x);
-	// cube->data->tex_width = cube->data->no_image_texture->width;
-	// cube->data->tex_height = cube->data->no_image_texture->height;
-	// cube->data->texture_x = (int)(cube->data->wall_x * cube->data->tex_width) % cube->data->tex_width;
-	// cube->data->step = (double)cube->data->tex_height / wall_height;
-	// cube->data->texture_pos = (from_y - (SCREEN_HEIGHT / 2 - wall_height / 2)) * cube->data->step;
-    // current_texture = cube->data->no_image_texture;
-    // int y = from_y;
-	// while (y < to_y)
-	// {
-	// 	cube->data->texture_y = (int)cube->data->texture_pos % cube->data->tex_height;
-	// 	cube->data->texture_pos += cube->data->step;
-	// 	uint32_t color = get_texture_pixel(current_texture, \
-	// 		cube->data->texture_x, cube->data->texture_y);
-	// 	mlx_put_pixel(cube->image, x, y, color);
-	// 	y++;
-	// }
-
-    
-
+    if (from_y < 0)
+        from_y = 0;
+    if (to_y > SCREEN_HEIGHT)
+        to_y = SCREEN_HEIGHT;
+    cube->data->wall_x = 1;
+	cube->data->wall_x -= floor(cube->data->wall_x);
+	cube->data->tex_width = cube->data->no_image_texture->width;
+	cube->data->tex_height = cube->data->no_image_texture->height;
 	if (!cube->hit->ver_hit)
-		bresenham_line(x, from_y, x, to_y, cube, 0xFFC0CBFF);
+		cube->data->texture_x = (int)(cube->hit->x * cube->data->tex_width / TILE_SIZE) % cube->data->tex_width;
 	else
-		bresenham_line(x, from_y, x, to_y, cube, 0xb163ffb1);
-	bresenham_line(x, from_y, x, 0, cube, 0x51158c51 );//sky
-	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, 0xffa54fff);//floor
+		cube->data->texture_x = (int)(cube->hit->y * cube->data->tex_height / TILE_SIZE) % cube->data->tex_height;
+    if (wall_height > 0)
+	    cube->data->step = (double)cube->data->tex_height / wall_height;
+    else
+        cube->data->step = 0;
+	cube->data->texture_pos = (from_y - (SCREEN_HEIGHT / 2 - wall_height / 2)) * cube->data->step;
+    current_texture = cube->data->no_image_texture;
+    if (!current_texture)
+		ft_error_message("Error\nNo texture");
+    int y = from_y;
+	while (y < to_y)
+	{
+		cube->data->texture_y = (int)cube->data->texture_pos % cube->data->tex_height;
+		uint32_t color = get_texture_pixel(current_texture, \
+			cube->data->texture_x, cube->data->texture_y);
+		mlx_put_pixel(cube->image, x, y, color);
+		cube->data->texture_pos += cube->data->step;
+		y++;
+	}
+	// if (!cube->hit->ver_hit)
+	// 	bresenham_line(x, from_y, x, to_y, cube, 0xFFC0CBFF);
+	// else
+	// 	bresenham_line(x, from_y, x, to_y, cube, 0xb163ffb1);
+	bresenham_line(x, from_y, x, 0, cube, cube->data->c_color);//sky 0x51158c51
+	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);//floor 0xffa54fff)
 }
+
+
 void render_minimap(void* param)
 {
 	t_cube *cube = param;

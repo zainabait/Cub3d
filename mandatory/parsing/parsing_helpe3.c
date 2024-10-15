@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_helpe3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:35:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:46:58 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/15 02:42:37 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 static int	create_trgb(int t, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	int color;
+
+	color = ((r << 24) | (g << 16) | (b << 8) | t);
+	return (color);
 }
 
 void	assign_color(t_data *args, char *line, char **tmp2)
 {
 	if (args->f_c == -1 && !ft_strncmp(line, "F", 1))
 	{
-		args->f_c = create_trgb(0, ft_atoi(tmp2[0]), \
+		args->f_c = create_trgb(254, ft_atoi(tmp2[0]), \
 		ft_atoi(tmp2[1]), ft_atoi(tmp2[2]));
 	}
 	else if (args->c_color == -1 && !ft_strncmp(line, "C", 1))
 	{
-		args->c_color = create_trgb(0, ft_atoi(tmp2[0]), \
+		args->c_color = create_trgb(254, ft_atoi(tmp2[0]), \
 		ft_atoi(tmp2[1]), ft_atoi(tmp2[2]));
 	}
 	else
