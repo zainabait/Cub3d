@@ -3,39 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:08:10 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/15 00:03:03 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/16 18:49:57 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-void	move_player(t_cube *cube)
-{
-	int	nextpos[2];
-
-	cube->player->angle += 0.06 * cube->player->td;
-	nextpos[0] = cos(cube->player->angle) * SPEED * cube->player->wd;
-	nextpos[1] = sin(cube->player->angle) * SPEED * cube->player->wd;
-	if (!is_wall(cube->player->x + nextpos[0], \
-		cube->player->y + nextpos[1], cube))
-	{
-		cube->player->x += nextpos[0];
-		cube->player->y += nextpos[1];
-	}
-	nextpos[0] = cos(cube->player->angle + M_PI / 2) \
-		* SPEED * cube->player->ard;
-	nextpos[1] = sin(cube->player->angle + M_PI / 2) \
-		* SPEED * cube->player->ard;
-	if (!is_wall(cube->player->x + nextpos[0], \
-		cube->player->y + nextpos[1], cube))
-	{
-		cube->player->x += nextpos[0];
-		cube->player->y += nextpos[1];
-	}
-}
 
 void	function(void *param)
 {
@@ -76,22 +51,8 @@ void	load_textures(t_cube *cube)
 	// if (!cube->data->ea_image_texture)
 	// 	ft_error_message("Error\nEa texture");
 }
-
-int	main(int ac, char **av)
+int	mlx_data_init(t_cube *cube)
 {
-	t_cube		*cube;
-	t_player	player;
-	t_inter		hit;
-	t_ray		ray[SCREEN_WIDTH];
-
-	if (ac != 2)
-		ft_error_message("num of args isn't correct.Usage: ./cub3D <map_file>");
-	cube = malloc(sizeof(t_cube));
-	cube->data = ft_parsing(av);
-	cube->hit = &hit;
-	cube->ray = ray;
-	cube->player = &player;
-	cube->player->angle = -1 * M_PI / 2;
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	if (!(cube->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D", true)))
 	{
@@ -110,8 +71,33 @@ int	main(int ac, char **av)
 		puts(mlx_strerror(mlx_errno));
 		return(1);
 	}
+	return (0);
+}
+int data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray)
+{
+	cube->hit = hit;
+	cube->ray = ray;
+	cube->player = player;
+	cube->player->angle = -1 * M_PI / 2;
+	if (mlx_data_init(cube))
+		return (1);
+	return (0);
+}
+int	main(int ac, char **av)
+{
+	t_cube		*cube;
+	t_player	player;
+	t_inter		hit;
+	t_ray		ray[SCREEN_WIDTH];
+
+	if (ac != 2)
+		ft_error_message("num of args isn't correct.Usage: ./cub3D <map_file>");
+	cube = talloc(sizeof(t_cube));
+	cube->data = ft_parsing(av);
+	if (data_init(cube, &player, &hit, ray))
+		return (1);
 	load_textures(cube);
-	initialize_position(cube->data, &player.x, &player.y);
+	initialize_position(cube->data, &cube->player->x, &cube->player->y);
 	mlx_loop_hook(cube->mlx, function, cube);
 	mlx_key_hook(cube->mlx, handle_key_input, cube);
 	mlx_loop(cube->mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/14 23:37:38 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:14:49 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,9 @@ int	get_sign(int a, int b);
 void	calculate_closest_ray(t_inter ch, t_inter cv, t_cube *cube);
 void	draw_player(void *param);
 void	put_pixel_safe(mlx_image_t *img, long x, long y, long color);
+void	move_player(t_cube *cube);
+bool	check_boundaries(double x, double y, t_cube *cube);
+double	normalize_angle(double angle);
 
 
 #endif

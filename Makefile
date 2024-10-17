@@ -5,8 +5,9 @@ NAME_BONUS			    = cub3D_bonus
 
 SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/raycasting/player.c \
-						  ./mandatory/raycasting/raycasting.c \
+						  ./mandatory/raycasting/horizontal_inter.c \
 						  ./mandatory/raycasting/render.c \
+						  ./mandatory/raycasting/vertical_inter.c \
 						  ./mandatory/raycasting/utils.c \
 						  ./mandatory/parsing/get_next_line.c \
 						  ./mandatory/parsing/get_next_line_utils.c \

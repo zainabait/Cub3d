@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/15 02:25:45 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/16 18:53:01 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,6 @@ void	render_3d(void *param)
 	render_minimap(cube);
 }
 
-// int    get_color(t_data *map, char c)
-// {
-//     if (c == 'c')
-//     {
-//         return ((map->c_color << 24) + \
-//         (map->ceiling_color[1] << 16) + (map->ceiling_color[2] << 8) + 255);
-//     }
-//     return ((map->floor_color[0] << 24) + \
-//     (map->floor_color[1] << 16) + (map->floor_color[2] << 8) + 255);
-// }
 
 void	render_wall(t_cube *cube, double x, double ray)
 {
@@ -75,17 +65,23 @@ void	render_wall(t_cube *cube, double x, double ray)
 	double	wall_height;
 	int		from_y;	
 	int		to_y;
+	int		y_something;
 	mlx_image_t *current_texture;
 
 	distance = cube->hit->dist * cos(cube->player->angle - ray);
 	base_distance = (SCREEN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+	// printf("%f\n", base_distance);
 	wall_height = (TILE_SIZE / distance) * base_distance;
 	from_y = (SCREEN_HEIGHT / 2) - (wall_height / 2);
 	to_y = from_y + wall_height;
-    if (from_y < 0)
+    // if (from_y < 0)
+    //     from_y = 0;
+    // if (to_y > SCREEN_HEIGHT)
+    //     to_y = SCREEN_HEIGHT;
+	if (wall_height >= SCREEN_HEIGHT) {
         from_y = 0;
-    if (to_y > SCREEN_HEIGHT)
         to_y = SCREEN_HEIGHT;
+	}
     cube->data->wall_x = 1;
 	cube->data->wall_x -= floor(cube->data->wall_x);
 	cube->data->tex_width = cube->data->no_image_texture->width;
@@ -108,7 +104,7 @@ void	render_wall(t_cube *cube, double x, double ray)
 		cube->data->texture_y = (int)cube->data->texture_pos % cube->data->tex_height;
 		uint32_t color = get_texture_pixel(current_texture, \
 			cube->data->texture_x, cube->data->texture_y);
-		mlx_put_pixel(cube->image, x, y, color);
+		put_pixel_safe(cube->image, x, y, color);
 		cube->data->texture_pos += cube->data->step;
 		y++;
 	}
@@ -116,8 +112,15 @@ void	render_wall(t_cube *cube, double x, double ray)
 	// 	bresenham_line(x, from_y, x, to_y, cube, 0xFFC0CBFF);
 	// else
 	// 	bresenham_line(x, from_y, x, to_y, cube, 0xb163ffb1);
-	bresenham_line(x, from_y, x, 0, cube, cube->data->c_color);//sky 0x51158c51
-	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);//floor 0xffa54fff)
+	// printf("%d %d %f\n", from_y, to_y, wall_height);
+	y_something = -1;
+	while (++y_something < from_y)
+		put_pixel_safe(cube->image, x, y_something, cube->data->c_color);
+	y_something = to_y - 1;
+	while (++y_something < SCREEN_HEIGHT)
+		put_pixel_safe(cube->image, x, y_something, cube->data->f_c);
+	// bresenham_line(x, from_y, x, 0, cube, cube->data->c_color);//sky 0x51158c51
+	// bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);//floor 0xffa54fff)
 }
 
 
