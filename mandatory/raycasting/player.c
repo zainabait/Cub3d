@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:20:57 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/16 18:48:07 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/17 20:53:49 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	handle_key_release(mlx_key_data_t keydata, t_cube *cube)
 {
 	if (keydata.action == MLX_RELEASE)
 	{
+		if (keydata.key == 320)
+			cube->cursor_hidden = 1;
+		else if (keydata.key == 321)
+			cube->cursor_hidden = 0;
 		if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_S)
 			cube->player->wd = 0;
 		if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_D)

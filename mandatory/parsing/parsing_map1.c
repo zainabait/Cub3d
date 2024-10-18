@@ -3,35 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:19:13 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:47:06 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:43:57 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void	first_last_char(t_data *args)
+void	first_last_char(t_data *arg)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	if (args->map[i])
+	if (arg->map[i])
 		i++;
-	while (args->map[i])
+	while (arg->map[i])
 	{
 		j = 1;
-		if (args->map[i][0] == '0' \
-			||args->map[i][ft_strlen(args->map[i]) - 1] == '0')
+		if (arg->map[i][0] == '0' \
+			||arg->map[i][ft_strlen(arg->map[i]) - 1] == '0')
 			ft_error_message("Error: Invalid map!!");
-		while (args->map[i][j])
+		while (arg->map[i][j])
 		{
-			if (args->map[i][j] == '0')
+			if (arg->map[i][j] == '0' || arg->map[i][j] == 'W' \
+	|| arg->map[i][j] == 'S' || arg->map[i][j] == 'E' || arg->map[i][j] == 'N')
 			{
-				if (args->map[i][j - 1] == ' ' || args->map[i][j + 1] == ' ' \
-	|| args->map[i - 1][j] == ' ' || args->map[i + 1][j] == ' ')
+				if (arg->map[i][j - 1] == ' ' || arg->map[i][j + 1] == ' ' \
+	|| arg->map[i - 1][j] == ' ' || arg->map[i + 1][j] == ' ')
 					ft_error_message("Error: Invalid map!!");
 			}
 			j++;

@@ -3,53 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/16 18:53:01 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:58:53 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-uint32_t    get_texture_pixel(mlx_image_t *texture, int x, int y)
+void	ft_init_der(double *ray, t_cube *cube)
 {
-    uint8_t    r;
-    uint8_t    g;
-    uint8_t    b;
-    uint8_t    a;
-    int        index;
-
-    if (!texture)
-        return (0xFFFFFFFF);
-    if (x >= 0 && (uint32_t)x < texture->width
-        && y >= 0 && (uint32_t)y < texture->height)
-    {
-        index = (y * texture->width + x) * 4;
-        r = texture->pixels[index];
-        g = texture->pixels[index + 1];
-        b = texture->pixels[index + 2];
-        a = texture->pixels[index + 3];
-        return (r << 24 | g << 16 | b << 8 | a);
-    }
-    return (0xFFFFFFFF);
+	cube->ray->is_down = *ray > 0 && *ray < M_PI;
+	cube->ray->is_up = !cube->ray->is_down;
+	cube->ray->is_right = *ray < M_PI / 2 || *ray > (3 * M_PI) / 2;
+	cube->ray->is_left = !cube->ray->is_right;
 }
+
 void	render_3d(void *param)
 {
-	t_cube *cube = (t_cube *)param;
-	int x;	
-	x = -1;
-	double ray = cube->player->angle - (FOV_ANGLE / 2);
-	t_inter ch;
-	t_inter cv;
+	t_inter	ch;
+	t_inter	cv;
+	t_cube	*cube;
+	double	ray;
+	int		x;
 
+	x = -1;
+	cube = (t_cube *)param;
+	ray = cube->player->angle - (FOV_ANGLE / 2);
 	while (++x < SCREEN_WIDTH)
 	{
+		ray = normalize_angle(ray);
+		ft_init_der(&ray, cube);
 		cv = find_vertical_intersection(cube, ray);
 		ch = find_horizontal_intersection(cube, ray);
 		calculate_closest_ray(ch, cv, cube);
-		cube->ray[x].x = cube->hit->x;
-		cube->ray[x].y = cube->hit->y;
+		1 && (cube->ray[x].x = cube->hit->x, cube->ray[x].y = cube->hit->y);
 		cube->ray[x].angle = ray;
 		render_wall(cube, x, ray);
 		ray += FOV_ANGLE / SCREEN_WIDTH;
@@ -57,70 +46,33 @@ void	render_3d(void *param)
 	render_minimap(cube);
 }
 
-
 void	render_wall(t_cube *cube, double x, double ray)
 {
-	double	distance;
-	double	base_distance;
-	double	wall_height;
-	int		from_y;	
-	int		to_y;
-	int		y_something;
-	mlx_image_t *current_texture;
+	double		wall_height;
+	int			from_y;
+	int			to_y;
+	mlx_image_t	*cur_tex;
 
-	distance = cube->hit->dist * cos(cube->player->angle - ray);
-	base_distance = (SCREEN_WIDTH / 2) / tan(FOV_ANGLE / 2);
-	// printf("%f\n", base_distance);
-	wall_height = (TILE_SIZE / distance) * base_distance;
-	from_y = (SCREEN_HEIGHT / 2) - (wall_height / 2);
-	to_y = from_y + wall_height;
-    // if (from_y < 0)
-    //     from_y = 0;
-    // if (to_y > SCREEN_HEIGHT)
-    //     to_y = SCREEN_HEIGHT;
-	if (wall_height >= SCREEN_HEIGHT) {
-        from_y = 0;
-        to_y = SCREEN_HEIGHT;
-	}
-    cube->data->wall_x = 1;
-	cube->data->wall_x -= floor(cube->data->wall_x);
-	cube->data->tex_width = cube->data->no_image_texture->width;
-	cube->data->tex_height = cube->data->no_image_texture->height;
-	if (!cube->hit->ver_hit)
-		cube->data->texture_x = (int)(cube->hit->x * cube->data->tex_width / TILE_SIZE) % cube->data->tex_width;
-	else
-		cube->data->texture_x = (int)(cube->hit->y * cube->data->tex_height / TILE_SIZE) % cube->data->tex_height;
-    if (wall_height > 0)
-	    cube->data->step = (double)cube->data->tex_height / wall_height;
-    else
-        cube->data->step = 0;
-	cube->data->texture_pos = (from_y - (SCREEN_HEIGHT / 2 - wall_height / 2)) * cube->data->step;
-    current_texture = cube->data->no_image_texture;
-    if (!current_texture)
-		ft_error_message("Error\nNo texture");
-    int y = from_y;
-	while (y < to_y)
+	cube->ray->dis = cube->hit->dist * cos(cube->player->angle - ray);
+	cal_wall_dimen(cube, &from_y, &to_y, &wall_height);
+	cur_tex = find_texture(cube);
+	if (!cur_tex)
+		ft_error_message("Error: No texture");
+	sel_calculate_texture(cube, cur_tex);
+	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
+	cube->ray->i = from_y;
+	while (cube->ray->i < to_y)
 	{
-		cube->data->texture_y = (int)cube->data->texture_pos % cube->data->tex_height;
-		uint32_t color = get_texture_pixel(current_texture, \
-			cube->data->texture_x, cube->data->texture_y);
-		put_pixel_safe(cube->image, x, y, color);
-		cube->data->texture_pos += cube->data->step;
-		y++;
+		cube->data->text_y = (int)cube->data->text_pos % cube->data->tex_height;
+		cube->ray->color = get_texture_pixel(cur_tex, \
+		cube->data->text_x, cube->data->text_y);
+		apply_shadow(&cube->ray->color, cube, 700);
+		mlx_put_pixel(cube->image, x, cube->ray->i, cube->ray->color);
+		cube->data->text_pos += cube->data->step;
+		cube->ray->i++;
 	}
-	// if (!cube->hit->ver_hit)
-	// 	bresenham_line(x, from_y, x, to_y, cube, 0xFFC0CBFF);
-	// else
-	// 	bresenham_line(x, from_y, x, to_y, cube, 0xb163ffb1);
-	// printf("%d %d %f\n", from_y, to_y, wall_height);
-	y_something = -1;
-	while (++y_something < from_y)
-		put_pixel_safe(cube->image, x, y_something, cube->data->c_color);
-	y_something = to_y - 1;
-	while (++y_something < SCREEN_HEIGHT)
-		put_pixel_safe(cube->image, x, y_something, cube->data->f_c);
-	// bresenham_line(x, from_y, x, 0, cube, cube->data->c_color);//sky 0x51158c51
-	// bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);//floor 0xffa54fff)
+	bresenham_line(x, from_y, x, 0, cube, cube->data->c_color);
+	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);
 }
 
 
@@ -144,9 +96,9 @@ void render_minimap(void* param)
                 while (x < TILE_SIZE / 5 - 1)
                 {
             		if (cube->data->map[j][i] == '1')
-                    	mlx_put_pixel(cube->image,i * TILE_SIZE / 5 + x, j * TILE_SIZE / 5 + y, 0xff0000ff);
+                    	put_pixel_safe(cube->image,i * TILE_SIZE / 5 + x, j * TILE_SIZE / 5 + y, 0xff0000ff);
 					else
-                    	mlx_put_pixel(cube->image, i * TILE_SIZE / 5 + x, j * TILE_SIZE / 5 + y, 0x00ff00ff);
+                    	put_pixel_safe(cube->image, i * TILE_SIZE / 5 + x, j * TILE_SIZE / 5 + y, 0x00ff00ff);
 					x++;
                 }
 				y++;
@@ -162,38 +114,31 @@ void render_minimap(void* param)
 		bresenham_line(cube->player->x/5, cube->player->y/5, cube->ray[x].x/5, cube->ray[x].y/5, cube, 0xFFFFFFFF);
 	}
 }
-void bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color)
-{
-    long diff[2], step[2], error[2], pos[2];
 
-    diff[0] = labs(to_x - from_x);
-    diff[1] = labs(to_y - from_y);
-    step[0] = get_sign(from_x, to_x);
-    step[1] = get_sign(from_y, to_y);
-    error[0] = diff[0] - diff[1];
-    pos[0] = from_x;
-    pos[1] = from_y;
-    while (pos[0] != to_x || pos[1] != to_y)
-    {
-        put_pixel_safe(cub->image, pos[0], pos[1], color);
-        error[1] = 2 * error[0];
-        if (error[1] > -diff[1])
-        {
-            error[0] -= diff[1];
-            pos[0] += step[0];
-        }
-        if (error[1] < diff[0])
-        {
-            error[0] += diff[0];
-            pos[1] += step[1];
-        }
-    }
-}
-void	put_pixel_safe(mlx_image_t *img, long x, long y, long color)
+void	bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color)
 {
-	if ((x < 0 || x >= SCREEN_WIDTH) || (y < 0 || y >= SCREEN_HEIGHT))
+	long diff[2], step[2], error[2], pos[2];
+
+	diff[0] = labs(to_x - from_x);
+	diff[1] = labs(to_y - from_y);
+	step[0] = get_sign(from_x, to_x);
+	step[1] = get_sign(from_y, to_y);
+	error[0] = diff[0] - diff[1];
+	pos[0] = from_x;
+	pos[1] = from_y;
+	while (pos[0] != to_x || pos[1] != to_y)
 	{
-		return ;
+		put_pixel_safe(cub->image, pos[0], pos[1], color);
+		error[1] = 2 * error[0];
+		if (error[1] > -diff[1])
+		{
+			error[0] -= diff[1];
+			pos[0] += step[0];
+		}
+		if (error[1] < diff[0])
+		{
+			error[0] += diff[0];
+			pos[1] += step[1];
+		}
 	}
-	mlx_put_pixel(img, x, y, color);
 }

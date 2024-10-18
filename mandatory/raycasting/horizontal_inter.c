@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_inter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:44:46 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/17 16:16:33 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:30:26 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,11 @@ t_inter	find_horizontal_intersection(t_cube *cube, double angle)
 	first_touch = calculate_first_horizontal_touch(cube, angle);
 	next_step = calculate_next_horizontal_step(angle);
 	return (wall_hor(cube, first_touch, next_step, angle));
+}
+
+void	put_pixel_safe(mlx_image_t *img, long x, long y, long color)
+{
+	if ((x < 0 || x >= SCREEN_WIDTH) || (y < 0 || y >= SCREEN_HEIGHT))
+		return ;
+	mlx_put_pixel(img, x, y, color);
 }

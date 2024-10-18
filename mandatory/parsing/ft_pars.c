@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:15 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 16:02:58 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:53:11 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ t_data	*ft_parsing(char **av)
 	check_elements(args);
 	rep_spaseses_to_ones(args);
 	return (args);
-	// clearheap(&args.heap);
 }
