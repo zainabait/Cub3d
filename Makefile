@@ -11,6 +11,7 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/raycasting/utils.c \
 						  ./mandatory/raycasting/utils1.c \
 						  ./mandatory/raycasting/utils2.c \
+						  ./mandatory/raycasting/minimap.c \
 						  ./mandatory/raycasting/textures_help.c \
 						  ./mandatory/parsing/get_next_line.c \
 						  ./mandatory/parsing/get_next_line_utils.c \

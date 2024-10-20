@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_help.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:43:23 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/20 10:37:59 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 19:07:42 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,3 @@ void	load_textures(t_cube *cube)
 		ft_error_message("Error: 'Ea' texture encountered");
 	ft_texture_to_image(cube);
 }
-

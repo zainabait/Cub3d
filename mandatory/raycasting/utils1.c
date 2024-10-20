@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:05:27 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/20 11:14:53 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 19:08:20 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	ft_texture_to_image(t_cube *cube)
 		ft_error_message("Error: 'Ea' texture encountered");
 }
 
-void    ft_clear_image(mlx_image_t *img)
+void	ft_clear_image(mlx_image_t *img)
 {
-    uint32_t        i;
-    uint32_t        j;
-    unsigned int    clear;
+	uint32_t		i;
+	uint32_t		j;
+	unsigned int	clear;
 
     i = 0;
     clear = 255 << 24 | 255 << 16 | 255 << 8 | 0;

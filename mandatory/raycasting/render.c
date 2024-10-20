@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/18 12:58:53 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 19:03:59 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,46 +75,6 @@ void	render_wall(t_cube *cube, double x, double ray)
 	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);
 }
 
-
-void render_minimap(void* param)
-{
-	t_cube *cube = param;
-    int j;
-    int x, y;
-	size_t i;
-	j = 0;
-
-    while (j < cube->data->height)
-    {
-		i = 0;
-        while (i < cube->data->width)
-        {
-            y = 0;
-            while (y < TILE_SIZE / 5 - 1)
-            {
-				x = 0;
-                while (x < TILE_SIZE / 5 - 1)
-                {
-            		if (cube->data->map[j][i] == '1')
-                    	put_pixel_safe(cube->image,i * TILE_SIZE / 5 + x, j * TILE_SIZE / 5 + y, 0xff0000ff);
-					else
-                    	put_pixel_safe(cube->image, i * TILE_SIZE / 5 + x, j * TILE_SIZE / 5 + y, 0x00ff00ff);
-					x++;
-                }
-				y++;
-            }
-			i++;
-        }
-		j++;
-    }
-	x =-1;
-	draw_player(cube);
-	while(++x < SCREEN_WIDTH)
-	{
-		bresenham_line(cube->player->x/5, cube->player->y/5, cube->ray[x].x/5, cube->ray[x].y/5, cube, 0xFFFFFFFF);
-	}
-}
-
 void	bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color)
 {
 	long diff[2], step[2], error[2], pos[2];
@@ -141,4 +101,32 @@ void	bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub,
 			pos[1] += step[1];
 		}
 	}
+}
+
+void	bresenham_line_mini(long from_x, long from_y, long to_x, long to_y, t_cube *cub)
+{
+    long diff[2], step[2], error[2], pos[2];
+
+    diff[0] = labs(to_x - from_x);
+    diff[1] = labs(to_y - from_y);
+    step[0] = get_sign(from_x, to_x);
+    step[1] = get_sign(from_y, to_y);
+    error[0] = diff[0] - diff[1];
+    pos[0] = from_x;
+    pos[1] = from_y;
+    while (pos[0] != to_x || pos[1] != to_y)
+    {
+        put_pixel_mini(cub->image, pos[0], pos[1], 0xFFFFFFFF);
+        error[1] = 2 * error[0];
+        if (error[1] > -diff[1])
+        {
+            error[0] -= diff[1];
+            pos[0] += step[0];
+        }
+        if (error[1] < diff[0])
+        {
+            error[0] += diff[0];
+            pos[1] += step[1];
+        }
+    }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:20:57 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/18 23:24:17 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 19:03:50 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	draw_player(void *param)
 		x = -2;
 		while (x <= 2)
 		{
-			mlx_put_pixel(cube->image, cube->player->x / 5 + x,
-				cube->player->y / 5 + y, 0xFFFA);
+			put_pixel_mini(cube->image, 100 + x,
+				100 + y, 0xD1C7D7D1);
 			x++;
 		}
 		y++;

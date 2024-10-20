@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/20 12:54:44 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 19:03:38 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ t_inter		find_horizontal_intersection(t_cube *cube, double angle);
 void		initialize_position(t_data *data, double *x, double *y);
 bool		is_wall(size_t x, int y, t_cube *cub);
 void		render_wall(t_cube *cube, double x, double ray);
-void		render_minimap(void *param);
+void		render_minimap(t_cube *cube);
 void		bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color);
 int			get_sign(int a, int b);
 void		calculate_closest_ray(t_inter ch, t_inter cv, t_cube *cube);
@@ -206,5 +206,7 @@ void		ft_mouse(double xpos, double ypos, void *param);
 int			mlx_data_init(t_cube *cube);
 int			data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray);
 void		ft_animation(t_cube *cub);
+void		put_pixel_mini(mlx_image_t *img, long x, long y, long color);
+void		bresenham_line_mini(long from_x, long from_y, long to_x, long to_y, t_cube *cub);
 
 #endif
