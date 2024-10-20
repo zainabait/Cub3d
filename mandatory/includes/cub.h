@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/18 12:54:22 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 12:54:44 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define FOV_ANGLE (60 * (M_PI / 180))
 # define TILE_SIZE 50
 # define SCREEN_WIDTH 1080
-# define SCREEN_HEIGHT 720
+# define SCREEN_HEIGHT 609
 # define SPEED 4
 
 # ifndef BUFFER_SIZE
@@ -75,6 +75,8 @@ typedef struct s_data
 	mlx_image_t		*so_image_texture;
 	mlx_image_t		*we_image_texture;
 	mlx_image_t		*ea_image_texture;
+	mlx_texture_t	*s_sprite[180];
+	mlx_image_t		*tp;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -91,6 +93,8 @@ typedef struct s_data
 	double			step;
 	double			text_pos;
 	double			text_y;
+	int				animation_loading;
+	int				fram;
 }					t_data;
 
 // ***************************
@@ -194,5 +198,13 @@ void		ft_texture_to_image(t_cube *cube);
 /*-------------------------------------------------------*/
 void		cal_wall_dimen(t_cube *cube, int *from_y, int *to_y,
 				double *w_height);
+void		load_sprite_textures(t_cube *cube);
+void		ft_clear_image(mlx_image_t *img);
+char		*ft_itoa(int n);
+void		load_sprite_textures(t_cube *cube);
+void		ft_mouse(double xpos, double ypos, void *param);
+int			mlx_data_init(t_cube *cube);
+int			data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray);
+void		ft_animation(t_cube *cub);
 
 #endif

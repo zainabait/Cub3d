@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:05:27 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/18 12:33:25 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/20 11:14:53 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,74 @@ void	ft_texture_to_image(t_cube *cube)
 		(cube->mlx, cube->data->ea_texture);
 	if (!cube->data->ea_image_texture)
 		ft_error_message("Error: 'Ea' texture encountered");
+}
+
+void    ft_clear_image(mlx_image_t *img)
+{
+    uint32_t        i;
+    uint32_t        j;
+    unsigned int    clear;
+
+    i = 0;
+    clear = 255 << 24 | 255 << 16 | 255 << 8 | 0;
+    while (i < img->height)
+    {
+        j = 0;
+        while (j < img->width)
+        {
+            mlx_put_pixel(img, j, i, clear);
+            j++;
+        }
+        i++;
+    }
+}
+
+void	ft_mouse(double xpos, double ypos, void *param)
+{
+	t_cube	*cub;
+
+	(void)ypos;
+	cub = (t_cube *)param;
+	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
+	if (cub->cursor_hidden && cub->player->prev_x > xpos)
+		cub->player->angle -= fabs(cub->player->prev_x - xpos) * 0.004;
+	else if (cub->cursor_hidden && cub->player->prev_x < xpos)
+		cub->player->angle += fabs(cub->player->prev_x - xpos) * 0.004;
+	cub->player->prev_x = xpos;
+}
+
+int	mlx_data_init(t_cube *cube)
+{
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	cube->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D", true);
+	if (!cube->mlx)
+	{
+		puts(mlx_strerror(mlx_errno));
+		return (1);
+	}
+	cube->image = mlx_new_image(cube->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!cube->image)
+	{
+		mlx_close_window(cube->mlx);
+		puts(mlx_strerror(mlx_errno));
+		return (1);
+	}
+	if (mlx_image_to_window(cube->mlx, cube->image, 0, 0) == -1)
+	{
+		mlx_close_window(cube->mlx);
+		puts(mlx_strerror(mlx_errno));
+		return (1);
+	}
+	return (0);
+}
+
+int	data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray)
+{
+	cube->hit = hit;
+	cube->ray = ray;
+	cube->player = player;
+	cube->player->angle = -1 * M_PI / 2;
+	if (mlx_data_init(cube))
+		return (1);
+	return (0);
 }

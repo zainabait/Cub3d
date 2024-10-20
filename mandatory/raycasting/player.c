@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:20:57 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/17 20:53:49 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/18 23:24:17 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ void	handle_key_input(mlx_key_data_t keydata, void *param)
 		cube->player->td = 1;
 	else if (keydata.key == MLX_KEY_LEFT)
 		cube->player->td = -1;
+	if (keydata.key == MLX_KEY_R)
+	{
+		cube->data->fram = 0;
+		cube->data->animation_loading = 1;
+	}
 	handle_key_release(keydata, cube);
 }
 
