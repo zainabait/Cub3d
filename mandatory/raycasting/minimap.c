@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 15:55:02 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/20 19:05:36 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:14:32 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void	render_minimap_background(t_cube *cube)
 
 void	render_player_view(t_cube *cube)
 {
-	double	a;
+	double		a;
+	t_line_y	line_y;
+	t_line_y	line_x;
 
 	a = -0.05;
 	while (a < 0.05)
 	{
-		bresenham_line_mini(100, 100, 100 + 200 * cos(cube->player->angle + a),
-			100 + 200 * sin(cube->player->angle + a), cube);
+		line_y.from = 100;
+		line_y.to = 100 + 200 * sin(cube->player->angle + a);
+		line_x.from = 100;
+		line_x.to = 100 + 200 * cos(cube->player->angle + a);
+		bresenham_line_mini(line_x, line_y, cube);
 		a += 0.005;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 10:37:23 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/20 15:54:27 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:21:51 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,18 @@ void	ft_animation(t_cube *cub)
 
 	if (i % 6 == 0)
 	{
-			mlx_delete_image(cub->mlx, cub->data->tp);
-			cub->data->tp = mlx_texture_to_image(cub->mlx, cub->data->s_sprite[cub->data->fram]);
-			mlx_image_to_window(cub->mlx, cub->data->tp, 0,0);
-			if (!cub->data->animation_loading)
-				cub->data->fram = 0;
-			if (cub->data->animation_loading && cub->data->fram == 99)
-			{
-				cub->data->fram = 0;
-				cub->data->animation_loading = 0;
-			}
-			cub->data->fram++;
+		mlx_delete_image(cub->mlx, cub->data->tp);
+		cub->data->tp = mlx_texture_to_image(cub->mlx, cub->data->s_sprite[cub->data->fram]);
+		mlx_image_to_window(cub->mlx, cub->data->tp, 0,0);
+		if (!cub->data->animation_loading)
+			cub->data->fram = 0;
+		if (cub->data->animation_loading && cub->data->fram == 99)
+		{
+			cub->data->fram = 0;
+			cub->data->animation_loading = 0;
+		}
+		cub->data->fram++;
 	}
 	i++;
 }
+

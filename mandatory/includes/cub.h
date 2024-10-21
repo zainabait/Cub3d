@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/20 19:03:38 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:11:25 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,14 @@ typedef struct cube
 
 // ***************************
 
+typedef struct s_line_y
+{
+	long	from;
+	long	to;
+}		t_line_y;
+
+// ***************************
+
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_substr(const char *s, unsigned int start, size_t len);
 size_t		ft_strlen(const char *str);
@@ -174,7 +182,7 @@ void		initialize_position(t_data *data, double *x, double *y);
 bool		is_wall(size_t x, int y, t_cube *cub);
 void		render_wall(t_cube *cube, double x, double ray);
 void		render_minimap(t_cube *cube);
-void		bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color);
+void		bresenham_line(long x, t_line_y line, t_cube *cub, long color);
 int			get_sign(int a, int b);
 void		calculate_closest_ray(t_inter ch, t_inter cv, t_cube *cube);
 void		draw_player(void *param);
@@ -207,6 +215,6 @@ int			mlx_data_init(t_cube *cube);
 int			data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray);
 void		ft_animation(t_cube *cub);
 void		put_pixel_mini(mlx_image_t *img, long x, long y, long color);
-void		bresenham_line_mini(long from_x, long from_y, long to_x, long to_y, t_cube *cub);
+void		bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub);
 
 #endif

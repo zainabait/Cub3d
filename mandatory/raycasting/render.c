@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/20 19:03:59 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:21:59 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,10 @@ void	render_3d(void *param)
 	render_minimap(cube);
 }
 
-void	render_wall(t_cube *cube, double x, double ray)
+void	shadow_help(t_line_y line_y, mlx_image_t *cur_tex, t_cube *cube, long x)
 {
-	double		wall_height;
-	int			from_y;
-	int			to_y;
-	mlx_image_t	*cur_tex;
-
-	cube->ray->dis = cube->hit->dist * cos(cube->player->angle - ray);
-	cal_wall_dimen(cube, &from_y, &to_y, &wall_height);
-	cur_tex = find_texture(cube);
-	if (!cur_tex)
-		ft_error_message("Error: No texture");
-	sel_calculate_texture(cube, cur_tex);
-	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
-	cube->ray->i = from_y;
-	while (cube->ray->i < to_y)
+	cube->ray->i = line_y.from;
+	while (cube->ray->i < line_y.to)
 	{
 		cube->data->text_y = (int)cube->data->text_pos % cube->data->tex_height;
 		cube->ray->color = get_texture_pixel(cur_tex, \
@@ -71,22 +59,47 @@ void	render_wall(t_cube *cube, double x, double ray)
 		cube->data->text_pos += cube->data->step;
 		cube->ray->i++;
 	}
-	bresenham_line(x, from_y, x, 0, cube, cube->data->c_color);
-	bresenham_line(x, SCREEN_HEIGHT, x, to_y - 1, cube, cube->data->f_c);
 }
 
-void	bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub, uint32_t color)
+void	render_wall(t_cube *cube, double x, double ray)
 {
-	long diff[2], step[2], error[2], pos[2];
+	double		wall_height;
+	int			from_y;
+	int			to_y;
+	t_line_y	line_y;
+	mlx_image_t	*cur_tex;
 
-	diff[0] = labs(to_x - from_x);
-	diff[1] = labs(to_y - from_y);
-	step[0] = get_sign(from_x, to_x);
-	step[1] = get_sign(from_y, to_y);
+	cube->ray->dis = cube->hit->dist * cos(cube->player->angle - ray);
+	cal_wall_dimen(cube, &from_y, &to_y, &wall_height);
+	cur_tex = find_texture(cube);
+	if (!cur_tex)
+		ft_error_message("Error: No texture");
+	sel_calculate_texture(cube, cur_tex);
+	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
+	line_y.to = to_y;
+	line_y.from = from_y;
+	shadow_help(line_y, cur_tex, cube, x);
+	line_y.to = 0;
+	line_y.from = from_y;
+	bresenham_line(x, line_y, cube, cube->data->c_color);
+	line_y.to = to_y - 1;
+	line_y.from = SCREEN_HEIGHT;
+	bresenham_line(x, line_y, cube, cube->data->f_c);
+}
+
+void	bresenham_line(long x, t_line_y line_y, t_cube *cub, long color)
+{
+	long	diff[2];
+	long	step[2];
+	long	error[2];
+	long	pos[2];
+
+	1 && (diff[0] = labs(x - x), step[0] = get_sign(x, x));
+	diff[1] = labs(line_y.to - line_y.from);
+	step[1] = get_sign(line_y.from, line_y.to);
 	error[0] = diff[0] - diff[1];
-	pos[0] = from_x;
-	pos[1] = from_y;
-	while (pos[0] != to_x || pos[1] != to_y)
+	1 && (pos[0] = x, pos[1] = line_y.from);
+	while (pos[0] != x || pos[1] != line_y.to)
 	{
 		put_pixel_safe(cub->image, pos[0], pos[1], color);
 		error[1] = 2 * error[0];
@@ -103,30 +116,31 @@ void	bresenham_line(long from_x, long from_y, long to_x, long to_y, t_cube *cub,
 	}
 }
 
-void	bresenham_line_mini(long from_x, long from_y, long to_x, long to_y, t_cube *cub)
+void	bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub)
 {
-    long diff[2], step[2], error[2], pos[2];
+	long	dif[2];
+	long	step[2];
+	long	err[2];
+	long	pos[2];
 
-    diff[0] = labs(to_x - from_x);
-    diff[1] = labs(to_y - from_y);
-    step[0] = get_sign(from_x, to_x);
-    step[1] = get_sign(from_y, to_y);
-    error[0] = diff[0] - diff[1];
-    pos[0] = from_x;
-    pos[1] = from_y;
-    while (pos[0] != to_x || pos[1] != to_y)
-    {
-        put_pixel_mini(cub->image, pos[0], pos[1], 0xFFFFFFFF);
-        error[1] = 2 * error[0];
-        if (error[1] > -diff[1])
-        {
-            error[0] -= diff[1];
-            pos[0] += step[0];
-        }
-        if (error[1] < diff[0])
-        {
-            error[0] += diff[0];
-            pos[1] += step[1];
-        }
-    }
+	dif[0] = labs(line_x.to - line_x.from);
+	dif[1] = labs(line_y.to - line_y.from);
+	step[0] = get_sign(line_x.from, line_x.to);
+	1 && (step[1] = get_sign(line_y.from, line_y.to), err[0] = dif[0] - dif[1]);
+	1 && (pos[0] = line_x.from, pos[1] = line_y.from);
+	while (pos[0] != line_x.to || pos[1] != line_y.to)
+	{
+		put_pixel_mini(cub->image, pos[0], pos[1], 0xFFFFFFFF);
+		err[1] = 2 * err[0];
+		if (err[1] > -dif[1])
+		{
+			err[0] -= dif[1];
+			pos[0] += step[0];
+		}
+		if (err[1] < dif[0])
+		{
+			err[0] += dif[0];
+			pos[1] += step[1];
+		}
+	}
 }
