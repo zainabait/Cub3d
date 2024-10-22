@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 18:20:57 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:09:58 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/22 10:32:36 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/22 10:32:37 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../includes/cub_bonus.h"
 
 void	initialize_position(t_data *data, double *x, double *y)
 {
@@ -33,6 +33,27 @@ void	initialize_position(t_data *data, double *x, double *y)
 			i++;
 		}
 		j++;
+	}
+}
+
+void	draw_player(void *param)
+{
+	t_cube	*cube;
+	int		x;
+	int		y;
+
+	cube = param;
+	y = -2;
+	while (y <= 2)
+	{
+		x = -2;
+		while (x <= 2)
+		{
+			put_pixel_mini(cube->image, 100 + x,
+				100 + y, 0xD1C7D7D1);
+			x++;
+		}
+		y++;
 	}
 }
 

@@ -6,27 +6,30 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:24 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/11 18:36:49 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/22 15:19:52 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_bonus.h"
+#include "../includes/cub_bonus.h"
 
 static int	create_trgb(int t, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	int	color;
+
+	color = ((r << 24) | (g << 16) | (b << 8) | t);
+	return (color);
 }
 
 void	assign_color(t_data *args, char *line, char **tmp2)
 {
 	if (args->f_c == -1 && !ft_strncmp(line, "F", 1))
 	{
-		args->f_c = create_trgb(0, ft_atoi(tmp2[0]), \
+		args->f_c = create_trgb(254, ft_atoi(tmp2[0]), \
 		ft_atoi(tmp2[1]), ft_atoi(tmp2[2]));
 	}
 	else if (args->c_color == -1 && !ft_strncmp(line, "C", 1))
 	{
-		args->c_color = create_trgb(0, ft_atoi(tmp2[0]), \
+		args->c_color = create_trgb(254, ft_atoi(tmp2[0]), \
 		ft_atoi(tmp2[1]), ft_atoi(tmp2[2]));
 	}
 	else

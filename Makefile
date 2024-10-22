@@ -11,7 +11,6 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/raycasting/utils.c \
 						  ./mandatory/raycasting/utils1.c \
 						  ./mandatory/raycasting/utils2.c \
-						  ./mandatory/raycasting/minimap.c \
 						  ./mandatory/raycasting/textures_help.c \
 						  ./mandatory/parsing/get_next_line.c \
 						  ./mandatory/parsing/get_next_line_utils.c \
@@ -27,16 +26,27 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/parsing/mohilloc.c 
 OBJS					= $(SRCS:.c=.o)
 
-BONUS					= ./bonus/parsing/get_next_line_bonus.c \
+BONUS					= ./bonus/raycasting/cub3d_bonus.c \
+						  ./bonus/raycasting/player_bonus.c \
+						  ./bonus/raycasting/horizontal_inter_bonus.c \
+						  ./bonus/raycasting/render_bonus.c \
+						  ./bonus/raycasting/vertical_inter_bonus.c \
+						  ./bonus/raycasting/utils_bonus.c \
+						  ./bonus/raycasting/utils1_bonus.c \
+						  ./bonus/raycasting/utils2_bonus.c \
+						  ./bonus/raycasting/minimap_bonus.c \
+						  ./bonus/raycasting/textures_help_bonus.c \
+						  ./bonus/parsing/get_next_line_bonus.c \
 						  ./bonus/parsing/get_next_line_utils_bonus.c \
 						  ./bonus/parsing/parsing_read_map_bonus.c \
-						  ./bonus/parsing/main_bonus.c \
+						  ./bonus/parsing/ft_parsing_bonus.c \
 						  ./bonus/parsing/parsing_helpe1_bonus.c \
 						  ./bonus/parsing/parsing_helpe2_bonus.c \
 						  ./bonus/parsing/parsing_map_bonus.c \
 						  ./bonus/parsing/parsing_map1_bonus.c \
 						  ./bonus/parsing/parsing_map2_bonus.c \
 						  ./bonus/parsing/parsing_map3_bonus.c \
+						  ./bonus/parsing/parsing_map4_bonus.c \
 						  ./bonus/parsing/parsing_helpe3_bonus.c \
 						  ./bonus/parsing/mohilloc_bonus.c
 OBJCS_BONUS				= $(BONUS:.c=.o)
@@ -52,11 +62,11 @@ bonus					: $(OBJCS_BONUS)
 						  $(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJCS_BONUS) -o $(NAME_BONUS)
 
 
-mandatory/%.o						: mandatory/%.c mandatory/includes/cub.h
+mandatory/%.o			: mandatory/%.c mandatory/includes/cub.h
 						  @echo "\033[0;34mCompiling $<...\033[0;m"
 						  $(CC) $(FLAGS) -c $< -o $@
 
-%.o						: %.c includes/cub_bonus.h 
+bonus/%.o				: bonus/%.c bonus/includes/cub_bonus.h 
 						  @echo "\033[0;34mCompiling $<...\033[0;m"
 						  $(CC) $(FLAGS) -c $< -o $@
 

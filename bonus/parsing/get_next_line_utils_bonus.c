@@ -6,11 +6,11 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:36:15 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/11 18:26:14 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/22 10:20:01 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_bonus.h"
+#include "../includes/cub_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {

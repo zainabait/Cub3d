@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vertical_inter.c                                   :+:      :+:    :+:   */
+/*   vertical_inter_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 14:51:23 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:10:35 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/22 10:33:46 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/22 10:39:41 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../includes/cub_bonus.h"
 
 t_inter	calculate_first_touch(t_cube *cube, double angle)
 {
@@ -67,4 +67,33 @@ t_inter	find_vertical_intersection(t_cube *cube, double angle)
 	first_touch = calculate_first_touch(cube, angle);
 	next_step = calculate_next_step(angle);
 	return (wall_ver(cube, first_touch, next_step, angle));
+}
+
+void	bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub)
+{
+	long	dif[2];
+	long	step[2];
+	long	err[2];
+	long	pos[2];
+
+	dif[0] = labs(line_x.to - line_x.from);
+	dif[1] = labs(line_y.to - line_y.from);
+	step[0] = get_sign(line_x.from, line_x.to);
+	1 && (step[1] = get_sign(line_y.from, line_y.to), err[0] = dif[0] - dif[1]);
+	1 && (pos[0] = line_x.from, pos[1] = line_y.from);
+	while (pos[0] != line_x.to || pos[1] != line_y.to)
+	{
+		put_pixel_mini(cub->image, pos[0], pos[1], 0xFFFFFFFF);
+		err[1] = 2 * err[0];
+		if (err[1] > -dif[1])
+		{
+			err[0] -= dif[1];
+			pos[0] += step[0];
+		}
+		if (err[1] < dif[0])
+		{
+			err[0] += dif[0];
+			pos[1] += step[1];
+		}
+	}
 }

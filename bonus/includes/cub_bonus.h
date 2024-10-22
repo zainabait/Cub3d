@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:07:11 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/22 15:03:25 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -167,6 +167,7 @@ void		check_map_round_byones(t_data *args);
 void		ivalid_lelement(char *str);
 void		rep_spaseses_to_ones(t_data *args);
 t_data		*ft_parsing(char **av);
+void		valid_element(t_data *arg, int i, int j);
 
 /*-----------garbege collecter---------------*/
 t_data		*get_cub(t_data *cub);
@@ -206,9 +207,15 @@ void		ft_texture_to_image(t_cube *cube);
 /*-------------------------------------------------------*/
 void		cal_wall_dimen(t_cube *cube, int *from_y, int *to_y,
 				double *w_height);
+void		load_sprite_textures(t_cube *cube);
 void		ft_clear_image(mlx_image_t *img);
+char		*ft_itoa(int n);
+void		load_sprite_textures(t_cube *cube);
 void		ft_mouse(double xpos, double ypos, void *param);
 int			mlx_data_init(t_cube *cube);
 int			data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray);
+void		ft_animation(t_cube *cub);
+void		put_pixel_mini(mlx_image_t *img, long x, long y, long color);
+void		bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub);
 
 #endif

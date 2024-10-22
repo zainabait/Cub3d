@@ -6,11 +6,11 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:39:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/11 18:26:08 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/22 10:19:56 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_bonus.h"
+#include "../includes/cub_bonus.h"
 
 void	ivalid_lelement(char *str)
 {

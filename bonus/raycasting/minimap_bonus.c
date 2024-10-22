@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 15:55:02 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/21 18:14:32 by zait-bel         ###   ########.fr       */
+/*   Created: 2024/10/22 10:32:14 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/22 10:32:26 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../includes/cub_bonus.h"
 
 void	put_pixel_mini(mlx_image_t *img, long x, long y, long color)
 {

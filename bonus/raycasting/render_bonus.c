@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:08:05 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/22 10:32:47 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/22 10:39:16 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../includes/cub_bonus.h"
 
 void	ft_init_der(double *ray, t_cube *cube)
 {
@@ -43,6 +43,7 @@ void	render_3d(void *param)
 		render_wall(cube, x, ray);
 		ray += FOV_ANGLE / SCREEN_WIDTH;
 	}
+	render_minimap(cube);
 }
 
 void	shadow_help(t_line_y line_y, mlx_image_t *cur_tex, t_cube *cube, long x)

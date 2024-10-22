@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   utils1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 18:05:27 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 09:55:53 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/22 10:33:22 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/22 10:33:24 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../includes/cub_bonus.h"
 
 void	apply_shadow(uint32_t *color, t_cube *cube, double max_distance)
 {

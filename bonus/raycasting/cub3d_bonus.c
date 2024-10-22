@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/06 23:08:10 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:07:53 by mohimi           ###   ########.fr       */
+/*   Created: 2024/10/22 10:31:42 by mohimi            #+#    #+#             */
+/*   Updated: 2024/10/22 10:31:46 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../includes/cub_bonus.h"
 
 void	function(void *param)
 {
@@ -20,6 +20,7 @@ void	function(void *param)
 	ft_clear_image(cube->image);
 	move_player(cube);
 	render_3d(cube);
+	ft_animation(cube);
 }
 
 int	main(int ac, char **av)
@@ -38,6 +39,8 @@ int	main(int ac, char **av)
 	cube->cursor_hidden = 0;
 	load_textures(cube);
 	initialize_position(cube->data, &cube->player->x, &cube->player->y);
+	load_sprite_textures(cube);
+	cube->data->fram = 0;
 	mlx_loop_hook(cube->mlx, function, cube);
 	mlx_cursor_hook(cube->mlx, ft_mouse, cube);
 	mlx_key_hook(cube->mlx, handle_key_input, cube);

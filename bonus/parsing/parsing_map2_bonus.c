@@ -6,11 +6,11 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:44 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/11 18:37:32 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/22 10:20:32 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_bonus.h"
+#include "../includes/cub_bonus.h"
 
 void	check_first_line(char *line)
 {

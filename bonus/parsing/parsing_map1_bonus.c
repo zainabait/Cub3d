@@ -6,34 +6,29 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:38 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/11 18:27:04 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/22 15:01:14 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_bonus.h"
+#include "../includes/cub_bonus.h"
 
-void	first_last_char(t_data *args)
+void	first_last_char(t_data *arg)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	if (args->map[i])
+	if (arg->map[i])
 		i++;
-	while (args->map[i])
+	while (arg->map[i])
 	{
 		j = 1;
-		if (args->map[i][0] == '0' \
-			||args->map[i][ft_strlen(args->map[i]) - 1] == '0')
+		if (arg->map[i][0] == '0' \
+			||arg->map[i][ft_strlen(arg->map[i]) - 1] == '0')
 			ft_error_message("Error: Invalid map!!");
-		while (args->map[i][j])
+		while (arg->map[i][j])
 		{
-			if (args->map[i][j] == '0')
-			{
-				if (args->map[i][j - 1] == ' ' || args->map[i][j + 1] == ' ' \
-	|| args->map[i - 1][j] == ' ' || args->map[i + 1][j] == ' ')
-					ft_error_message("Error: Invalid map!!");
-			}
+			valid_element(arg, i, j);
 			j++;
 		}
 		i++;
