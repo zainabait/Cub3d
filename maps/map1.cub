@@ -1,10 +1,10 @@
-NO textures/tex10.png
-SO textures/tex11.png
-WE textures/tex12.png
-EA textures/tex4.png
+NO texture/5.png
+SO texture/6.png
+WE texture/10.png
+EA texture/9.png
 
-C 158,191,253
-F 195,128,243
+F     72, 50, 72
+C     41, 0, 61
 
 111111111111111
 100000100000001

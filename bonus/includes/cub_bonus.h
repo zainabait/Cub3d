@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:03:25 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:46:21 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct player
 	double	x;
 	double	y;
 	double	angle;
-	double	prev_x;
 	int		wd;
 	int		ard;
 	int		td;	
@@ -66,7 +65,6 @@ struct s_heap
 
 typedef struct s_data
 {
-	t_heap			*heap;
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*we_texture;
@@ -93,8 +91,9 @@ typedef struct s_data
 	double			step;
 	double			text_pos;
 	double			text_y;
-	int				animation_loading;
+	int				animt;
 	int				fram;
+	int				shift;
 }					t_data;
 
 // ***************************
@@ -117,6 +116,7 @@ typedef struct rays
 
 typedef struct cube
 {
+	t_heap			*heap;
 	mlx_t			*mlx;
 	mlx_image_t		*image;
 	t_player		*player;
@@ -170,7 +170,7 @@ t_data		*ft_parsing(char **av);
 void		valid_element(t_data *arg, int i, int j);
 
 /*-----------garbege collecter---------------*/
-t_data		*get_cub(t_data *cub);
+t_cube		*get_cub(t_cube *cub);
 void		clearheap(t_heap **node);
 void		*talloc(size_t __size);
 

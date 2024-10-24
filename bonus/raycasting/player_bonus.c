@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:36 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:32:37 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 12:34:50 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ void	handle_key_input(mlx_key_data_t keydata, void *param)
 
 	cube = param;
 	if (keydata.key == MLX_KEY_ESCAPE)
+	{
+		clearheap(&cube->heap);
 		mlx_close_window(cube->mlx);
+	}
 	else if (keydata.key == MLX_KEY_W)
 		cube->player->wd = 1;
 	else if (keydata.key == MLX_KEY_S)
@@ -94,10 +97,7 @@ void	handle_key_input(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_LEFT)
 		cube->player->td = -1;
 	if (keydata.key == MLX_KEY_R)
-	{
-		cube->data->fram = 0;
-		cube->data->animation_loading = 1;
-	}
+		1 && (cube->data->fram = 0, cube->data->animt = 1);
 	handle_key_release(keydata, cube);
 }
 

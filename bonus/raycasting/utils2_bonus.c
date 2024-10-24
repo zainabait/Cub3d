@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:29 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:38:58 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/23 21:00:41 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ void	ft_animation(t_cube *cub)
 {
 	static int	i;
 
-	if (i % 6 == 0)
+	if (i % 2 == 0)
 	{
 		mlx_delete_image(cub->mlx, cub->data->tp);
 		cub->data->tp = mlx_texture_to_image \
 			(cub->mlx, cub->data->s_sprite[cub->data->fram]);
 		mlx_image_to_window(cub->mlx, cub->data->tp, 0, 0);
-		if (!cub->data->animation_loading)
+		if (!cub->data->animt)
 			cub->data->fram = 0;
-		if (cub->data->animation_loading && cub->data->fram == 99)
+		if (cub->data->animt && cub->data->fram == 99)
 		{
 			cub->data->fram = 0;
-			cub->data->animation_loading = 0;
+			cub->data->animt = 0;
 		}
 		cub->data->fram++;
 	}

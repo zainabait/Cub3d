@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:15 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/18 11:53:11 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 10:50:49 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ t_data	*ft_parsing(char **av)
 	int		i;
 
 	args = talloc(sizeof(t_data));
-	1 && (i = 0, args->heap = NULL);
-	get_cub(args);
+	i = 0;
 	check_file_isvalid(av[1]);
 	file = ft_read_map(av[1]);
 	if (!file[0])

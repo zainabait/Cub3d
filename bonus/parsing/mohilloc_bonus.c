@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:01 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:20:06 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 12:56:02 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ t_heap	*heap_new(void *content)
 	return (head);
 }
 
-t_data	*get_cub(t_data *cub)
+t_cube	*get_cub(t_cube *cub)
 {
-	static t_data	*cub_s;
+	static t_cube	*cub_s;
 
 	if (cub)
 		cub_s = cub;
@@ -71,7 +71,7 @@ void	*talloc(size_t __size)
 {
 	void	*__ptr;
 	t_heap	*__node;
-	t_data	*__cub;
+	t_cube	*__cub;
 
 	__cub = get_cub(NULL);
 	__ptr = malloc(__size);
