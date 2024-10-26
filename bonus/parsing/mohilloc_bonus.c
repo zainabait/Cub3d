@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:01 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/24 12:56:02 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 13:28:43 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ void	*talloc(size_t __size)
 	if (__ptr == NULL)
 	{
 		clearheap(&__cub->heap);
-		ft_error_message("Error: malloc failed");
+		ft_error_message("Error:\nmalloc failed");
 	}
 	__node = heap_new(__ptr);
+	// printf("node: %p\n", __node);
 	if (!__node)
 	{
 		free(__ptr);
 		clearheap(&__cub->heap);
-		ft_error_message("Error: malloc failed");
+		ft_error_message("Error:\nmalloc failed");
 	}
 	heap_addback(&__cub->heap, __node);
 	return (__ptr);

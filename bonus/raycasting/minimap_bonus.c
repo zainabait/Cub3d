@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:32:26 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/26 15:39:41 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ void	render_minimap_tile(t_cube *cube, int i, int j)
 					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,
 					j * TILE_SIZE / 4 + y - cube->player->y / 4 + 100,
 					0x71597F71);
+			else if (cube->data->map[j][i] == 'D')
+				put_pixel_mini(cube->image,
+					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,
+					j * TILE_SIZE / 4 + y - cube->player->y / 4 + 100,
+					0xFF0000FF);
 			else
 				put_pixel_mini(cube->image,
 					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,

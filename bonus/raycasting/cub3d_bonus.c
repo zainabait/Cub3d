@@ -6,12 +6,12 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:31:42 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/24 12:56:29 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 16:15:14 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub_bonus.h"
-#include <string.h>
+
 void	function(void *param)
 {
 	t_cube	*cube;
@@ -32,7 +32,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		ft_error_message("num of args isn't correct.Usage: ./cub3D <map_file>");
-	memset(&cube, 0, sizeof(t_cube));
 	get_cub(&cube);
 	cube.data = ft_parsing(av);
 	if (data_init(&cube, &player, &hit, ray))

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:58 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:33:00 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/25 16:20:50 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ mlx_image_t	*find_texture(t_cube *cube)
 {
 	mlx_image_t	*txt;
 
-	if (!cube->hit->ver_hit)
+	if (cube->data->found_doorl)
+		txt = cube->data->door_image_text;
+	else if (!cube->hit->ver_hit)
 	{
 		if (cube->ray->is_up)
 			txt = cube->data->no_image_texture;
@@ -91,4 +93,5 @@ void	load_textures(t_cube *cube)
 	if (!cube->data->ea_texture)
 		ft_error_message("Error: 'Ea' texture encountered");
 	ft_texture_to_image(cube);
+	ft_door_texture(cube);
 }

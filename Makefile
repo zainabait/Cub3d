@@ -1,5 +1,5 @@
 CC 						= cc 
-FLAGS                   = -Wall -Wextra -Werror -Imlx -Ofast #-g -fsanitize=address
+FLAGS                   = -Wall -Wextra -Werror -Imlx -Ofast -g -fsanitize=address
 NAME					= cub3D
 NAME_BONUS			    = cub3D_bonus
 
@@ -34,6 +34,7 @@ BONUS					= ./bonus/raycasting/cub3d_bonus.c \
 						  ./bonus/raycasting/utils_bonus.c \
 						  ./bonus/raycasting/utils1_bonus.c \
 						  ./bonus/raycasting/utils2_bonus.c \
+						  ./bonus/raycasting/utils3_bonus.c\
 						  ./bonus/raycasting/minimap_bonus.c \
 						  ./bonus/raycasting/textures_help_bonus.c \
 						  ./bonus/parsing/get_next_line_bonus.c \

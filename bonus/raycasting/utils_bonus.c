@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:10 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:33:12 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/26 15:52:13 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 bool	is_wall(size_t x, int y, t_cube *cub)
 {
-	(void)cub;
 	if (x < 0 || x > cub->data->width * TILE_SIZE || y < 0
 		|| y > cub->data->height * TILE_SIZE)
 		return (true);
 	if (cub->data->map[y / TILE_SIZE][x / TILE_SIZE] == '1')
+		return (true);
+	else if (cub->data->map[y / TILE_SIZE][x / TILE_SIZE] == 'D')
 		return (true);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/24 11:46:21 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/26 18:08:37 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 #  define BUFFER_SIZE 10
 # endif
 
-typedef struct intersection
+typedef struct s_intersection
 {
 	double	x;
 	double	y;
@@ -41,7 +41,7 @@ typedef struct intersection
 
 // ***************************
 
-typedef struct player
+typedef struct s_player
 {
 	double	x;
 	double	y;
@@ -73,8 +73,10 @@ typedef struct s_data
 	mlx_image_t		*so_image_texture;
 	mlx_image_t		*we_image_texture;
 	mlx_image_t		*ea_image_texture;
-	mlx_texture_t	*s_sprite[180];
+	mlx_texture_t	*s_sprite[100];
 	mlx_image_t		*tp;
+	mlx_texture_t	*door_text;
+	mlx_image_t		*door_image_text;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -94,11 +96,14 @@ typedef struct s_data
 	int				animt;
 	int				fram;
 	int				shift;
+	double			d_x;
+	double			d_y;
+	bool			found_doorl;
 }					t_data;
 
 // ***************************
 
-typedef struct rays
+typedef struct s_rays
 {
 	double		x;
 	double		y;
@@ -114,7 +119,7 @@ typedef struct rays
 
 // ***************************
 
-typedef struct cube
+typedef struct s_cube
 {
 	t_heap			*heap;
 	mlx_t			*mlx;
@@ -217,5 +222,8 @@ int			data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray);
 void		ft_animation(t_cube *cub);
 void		put_pixel_mini(mlx_image_t *img, long x, long y, long color);
 void		bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub);
+void		ft_clear_sprites(t_cube *cube);
+void		ft_door_texture(t_cube *cube);
+void		normalize_door(t_cube *cube);
 
 #endif

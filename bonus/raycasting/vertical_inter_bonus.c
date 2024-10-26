@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:46 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:39:41 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/25 15:39:43 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ t_inter	calculate_first_touch(t_cube *cube, double angle)
 	first_touch.x = floor(cube->player->x / TILE_SIZE) * TILE_SIZE;
 	if (angle > M_PI * 1.5 || angle < M_PI / 2)
 		first_touch.x += TILE_SIZE;
-	first_touch.y = cube->player->y + (first_touch.x - cube->player->x)
+	first_touch.y = cube->player->y + (first_touch.x - cube->player->x) \
 		* tan(angle);
+	if (first_touch.y > cube->data->height * TILE_SIZE)
+		first_touch.y = cube->data->height * TILE_SIZE - 1;
 	return (first_touch);
 }
 

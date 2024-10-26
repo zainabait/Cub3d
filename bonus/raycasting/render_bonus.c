@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/24 11:49:45 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/26 16:07:44 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ void	render_3d(void *param)
 	ray = cube->player->angle - (FOV_ANGLE / 2);
 	while (++x < SCREEN_WIDTH)
 	{
+		cube->data->found_doorl = false;
 		ray = normalize_angle(ray);
 		ft_init_der(&ray, cube);
 		cv = find_vertical_intersection(cube, ray);
 		ch = find_horizontal_intersection(cube, ray);
 		calculate_closest_ray(ch, cv, cube);
-		1 && (cube->ray[x].x = cube->hit->x, cube->ray[x].y = cube->hit->y);
 		cube->ray[x].angle = ray;
+		normalize_door(cube);
 		render_wall(cube, x, ray);
 		ray += FOV_ANGLE / SCREEN_WIDTH;
 	}

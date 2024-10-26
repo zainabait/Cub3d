@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:00 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:32:03 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/25 15:45:26 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_inter	calculate_first_horizontal_touch(t_cube *cube, double angle)
 	first_touch.y = floor(cube->player->y / TILE_SIZE) * TILE_SIZE;
 	if (angle > 0 && angle < M_PI)
 		first_touch.y += TILE_SIZE;
-	first_touch.x = cube->player->x
+	first_touch.x = cube->player->x \
 		+ (first_touch.y - cube->player->y) / tan(angle);
 	if (first_touch.x > cube->data->width * TILE_SIZE)
 		first_touch.x = cube->data->width * TILE_SIZE - 1;
@@ -52,6 +52,7 @@ t_inter	wall_hor(t_cube *cube, t_inter f_touch, t_inter next_step, double angle)
 		t = check.y;
 		if (angle >= M_PI && angle <= 2 * M_PI)
 			t = check.y - 1;
+		
 		if (is_wall(check.x, t, cube))
 			break ;
 		check.x += next_step.x;

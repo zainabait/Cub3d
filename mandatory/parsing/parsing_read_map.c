@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_read_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:58:30 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:47:19 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:13:35 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ char	**get_map(char *file, int count)
 	if (fd < 0)
 		ft_error_message("Error: from fd!");
 	map = (char **)talloc(sizeof(char *) * (count + 1));
-	if (!map)
-		ft_error_message("Error: from talloc!");
 	line = get_next_line(fd);
 	while (line)
 	{

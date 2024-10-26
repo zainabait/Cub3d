@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:36 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/24 12:34:50 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/24 17:52:23 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,18 @@ void	handle_key_release(mlx_key_data_t keydata, t_cube *cube)
 	}
 }
 
+void	ft_clear_sprites(t_cube *cube)
+{
+	int	i;
+
+	i = 0;
+	while (i < 100)
+		{
+			free(cube->data->s_sprite[i]->pixels);
+			free(cube->data->s_sprite[i]);
+			i++;
+		}
+}
 void	handle_key_input(mlx_key_data_t keydata, void *param)
 {
 	t_cube	*cube;
@@ -81,6 +93,7 @@ void	handle_key_input(mlx_key_data_t keydata, void *param)
 	cube = param;
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
+		ft_clear_sprites(cube);
 		clearheap(&cube->heap);
 		mlx_close_window(cube->mlx);
 	}

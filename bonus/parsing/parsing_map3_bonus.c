@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:53 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:20:36 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/25 17:48:12 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,11 @@ static void	check_valid_map(t_data *args)
 		while (args->map[i][j])
 		{
 			if (args->map[i][j] != '1' && args->map[i][j] != '0' \
-				&& args->map[i][j] != '2' && args->map[i][j] != 'N' \
+				&& args->map[i][j] != 'N' \
 				&& args->map[i][j] != 'S' && args->map[i][j] != 'W' \
 				&& args->map[i][j] != 'E' && args->map[i][j] != ' ' \
 				&& args->map[i][j] != 'D')
-			{
 				ft_error_message("Error: Invalid map!!");
-			}
 			j++;
 		}
 		i++;
