@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/26 15:39:41 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/27 16:05:34 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_pixel_mini(mlx_image_t *img, long x, long y, long color)
 	{
 		return ;
 	}
-	mlx_put_pixel(img, x, y, color);
+	put_pixel_safe(img, x, y, color);
 }
 
 void	render_minimap_background(t_cube *cube)

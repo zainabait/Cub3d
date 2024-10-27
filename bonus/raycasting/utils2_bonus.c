@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:29 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/25 12:09:09 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/27 16:05:28 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	ft_clear_image(mlx_image_t *img)
 		j = 0;
 		while (j < img->width)
 		{
-			mlx_put_pixel(img, j, i, clear);
+			put_pixel_safe(img, j, i, clear);
 			j++;
 		}
 		i++;

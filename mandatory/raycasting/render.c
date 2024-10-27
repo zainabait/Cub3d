@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/25 15:25:30 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/27 16:05:17 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	shadow_help(t_line_y line_y, mlx_image_t *cur_tex, t_cube *cube, long x)
 		cube->ray->color = get_texture_pixel(cur_tex, \
 		cube->data->text_x, cube->data->text_y);
 		apply_shadow(&cube->ray->color, cube, 700);
-		mlx_put_pixel(cube->image, x, cube->ray->i, cube->ray->color);
+		put_pixel_safe(cube->image, x, cube->ray->i, cube->ray->color);
 		cube->data->text_pos += cube->data->step;
 		cube->ray->i++;
 	}

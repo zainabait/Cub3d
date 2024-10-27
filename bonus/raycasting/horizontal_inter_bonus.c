@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:00 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/25 15:45:26 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/26 20:50:54 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_inter	wall_hor(t_cube *cube, t_inter f_touch, t_inter next_step, double angle)
 		t = check.y;
 		if (angle >= M_PI && angle <= 2 * M_PI)
 			t = check.y - 1;
-		
 		if (is_wall(check.x, t, cube))
 			break ;
 		check.x += next_step.x;
