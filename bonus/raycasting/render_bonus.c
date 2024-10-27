@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 16:08:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/27 17:22:31 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void	render_wall(t_cube *cube, double x, double ray)
 		ft_error_message("Error: No texture");
 	sel_calculate_texture(cube, cur_tex);
 	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
-	line_y.to = to_y - cube->data->shift;
-	line_y.from = from_y - cube->data->shift;
+	line_y.to = to_y;
+	line_y.from = from_y;
 	shadow_help(line_y, cur_tex, cube, x);
 	line_y.to = 0;
-	line_y.from = from_y - cube->data->shift;
+	line_y.from = from_y;
 	bresenham_line(x, line_y, cube, cube->data->c_color);
-	line_y.to = to_y - 1 - cube->data->shift;
+	line_y.to = to_y - 1;
 	line_y.from = SCREEN_HEIGHT;
 	bresenham_line(x, line_y, cube, cube->data->f_c);
 }

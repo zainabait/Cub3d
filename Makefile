@@ -35,6 +35,7 @@ BONUS					= ./bonus/raycasting/cub3d_bonus.c \
 						  ./bonus/raycasting/utils1_bonus.c \
 						  ./bonus/raycasting/utils2_bonus.c \
 						  ./bonus/raycasting/utils3_bonus.c\
+						  ./bonus/raycasting/utils4_bonus.c\
 						  ./bonus/raycasting/minimap_bonus.c \
 						  ./bonus/raycasting/textures_help_bonus.c \
 						  ./bonus/parsing/get_next_line_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/27 16:00:12 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/27 18:28:41 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_player
 	double	angle;
 	int		wd;
 	int		ard;
-	int		td;	
+	int		td;
 }			t_player;
 
 // ***************************
@@ -96,8 +96,8 @@ typedef struct s_data
 	int				animt;
 	int				fram;
 	int				shift;
-	double			d_x;
-	double			d_y;
+	// double			d_x;
+	// double			d_y;
 	bool			found_doorl;
 }					t_data;
 
@@ -222,8 +222,10 @@ int			data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray);
 void		ft_animation(t_cube *cub);
 void		put_pixel_mini(mlx_image_t *img, long x, long y, long color);
 void		bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub);
-void		ft_clear_sprites(t_cube *cube);
+void		clear_spr(t_cube *cube);
 void		ft_door_texture(t_cube *cube);
 void		normalize_door(t_cube *cube);
+void		open_door(t_cube *cube);
+void		ft_close_door(t_cube *cube);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:12:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 14:06:40 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/27 18:23:24 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,18 @@ void	normalize_door(t_cube *cube)
 				/ TILE_SIZE - 1][(int)cube->hit->x / TILE_SIZE] == 'D')
 				cube->data->found_doorl = true;
 		}
+	}
+}
+
+void	clear_spr(t_cube *cube)
+{
+	int	i;
+
+	i = 0;
+	while (i < 100)
+	{
+		free(cube->data->s_sprite[i]->pixels);
+		free(cube->data->s_sprite[i]);
+		i++;
 	}
 }
