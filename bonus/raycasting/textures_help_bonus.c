@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:58 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/25 16:20:50 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:57:24 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,10 @@ void	sel_calculate_texture(t_cube *cube, mlx_image_t *current_tex)
 
 void	load_textures(t_cube *cube)
 {
-	cube->data->no_texture = mlx_load_png(cube->data->no);
-	if (!cube->data->no_texture)
-		ft_error_message("Error: 'No' texture encountered");
-	cube->data->so_texture = mlx_load_png(cube->data->so);
-	if (!cube->data->so_texture)
-		ft_error_message("Error: 'So' texture encountered");
-	cube->data->we_texture = mlx_load_png(cube->data->we);
-	if (!cube->data->we_texture)
-		ft_error_message("Error: 'We' texture encountered");
-	cube->data->ea_texture = mlx_load_png(cube->data->ea);
-	if (!cube->data->ea_texture)
-		ft_error_message("Error: 'Ea' texture encountered");
+	cube->data->no_texture = my_mlx_load_png(cube->data->no);
+	cube->data->so_texture = my_mlx_load_png(cube->data->so);
+	cube->data->we_texture = my_mlx_load_png(cube->data->we);
+	cube->data->ea_texture = my_mlx_load_png(cube->data->ea);
 	ft_texture_to_image(cube);
 	ft_door_texture(cube);
 }

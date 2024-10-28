@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:17:24 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 18:25:12 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 17:06:10 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,34 @@ void	ft_close_door(t_cube *cube)
 		}
 		j++;
 	}
+}
+
+mlx_texture_t	*my_mlx_load_png(char *path)
+{
+	mlx_texture_t	*texture;
+
+	texture = mlx_load_png(path);
+	if (!texture)
+		ft_error_message("Error: 'No' texture encountered");
+	return (texture);
+}
+
+mlx_image_t	*my_mlx_texture_to_image(void *mlx, mlx_texture_t *texture)
+{
+	mlx_image_t	*image;
+
+	image = mlx_texture_to_image(mlx, texture);
+	if (!image)
+		ft_error_message("Error: 'No' texture encountered");
+	mlx_delete_texture(texture);
+	return (image);
+}
+
+void	ft_close(void *param)
+{
+    t_cube *cube = (t_cube *)param;
+    clear_spr(cube);
+    clearheap(&cube->heap);
+    mlx_close_window(cube->mlx);
+    exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:29 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 16:05:28 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:57:32 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,14 @@ void	ft_animation(t_cube *cub)
 
 void	ft_texture_to_image(t_cube *cube)
 {
-	cube->data->no_image_texture = mlx_texture_to_image \
+	cube->data->no_image_texture = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->no_texture);
-	if (!cube->data->no_image_texture)
-		ft_error_message("Error: 'No' texture encountered");
-	cube->data->so_image_texture = mlx_texture_to_image \
+	cube->data->so_image_texture = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->so_texture);
-	if (!cube->data->so_image_texture)
-		ft_error_message("Error: 'So' texture encountered");
-	cube->data->we_image_texture = mlx_texture_to_image \
+	cube->data->we_image_texture = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->we_texture);
-	if (!cube->data->we_image_texture)
-		ft_error_message("Error: 'We' texture encountered");
-	cube->data->ea_image_texture = mlx_texture_to_image \
+	cube->data->ea_image_texture = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->ea_texture);
-	if (!cube->data->ea_image_texture)
-		ft_error_message("Error: 'Ea' texture encountered");
 }
 
 void	ft_clear_image(mlx_image_t *img)

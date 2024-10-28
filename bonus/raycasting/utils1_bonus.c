@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:22 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/24 17:34:57 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 16:18:07 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,20 @@ int	mlx_data_init(t_cube *cube)
 	cube->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D", true);
 	if (!cube->mlx)
 	{
-		puts(mlx_strerror(mlx_errno));
+		mlx_strerror(mlx_errno);
 		return (1);
 	}
 	cube->image = mlx_new_image(cube->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!cube->image)
 	{
 		mlx_close_window(cube->mlx);
-		puts(mlx_strerror(mlx_errno));
+		mlx_strerror(mlx_errno);
 		return (1);
 	}
 	if (mlx_image_to_window(cube->mlx, cube->image, 0, 0) == -1)
 	{
 		mlx_close_window(cube->mlx);
-		puts(mlx_strerror(mlx_errno));
+		mlx_strerror(mlx_errno);
 		return (1);
 	}
 	return (0);

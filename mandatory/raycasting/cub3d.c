@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:08:10 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/24 11:51:38 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 17:13:49 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		ft_error_message("num of args isn't correct.Usage: ./cub3D <map_file>");
-	
 	get_cub(&cube);
 	cube.data = ft_parsing(av);
 	if (data_init(&cube, &player, &hit, ray))
@@ -42,5 +41,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(cube.mlx, function, &cube);
 	mlx_cursor_hook(cube.mlx, ft_mouse, &cube);
 	mlx_key_hook(cube.mlx, handle_key_input, &cube);
+	mlx_close_hook(cube.mlx, ft_close, &cube);
 	mlx_loop(cube.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:31:42 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 18:18:16 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 18:41:44 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(cube.mlx, function, &cube);
 	mlx_cursor_hook(cube.mlx, ft_mouse, &cube);
 	mlx_key_hook(cube.mlx, handle_key_input, &cube);
+	mlx_close_hook(cube.mlx, ft_close, &cube);
 	mlx_loop(cube.mlx);
 }

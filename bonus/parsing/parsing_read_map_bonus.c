@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:38:53 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:20:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 15:51:50 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ char	**get_map(char *file, int count)
 	if (fd < 0)
 		ft_error_message("Error: from fd!");
 	map = (char **)talloc(sizeof(char *) * (count + 1));
-	if (!map)
-		ft_error_message("Error: from talloc!");
 	line = get_next_line(fd);
 	while (line)
 	{

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:12:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 18:23:24 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:56:07 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 void	ft_door_texture(t_cube *cube)
 {
-	cube->data->door_text = mlx_load_png("door/1.png");
-	if (!cube->data->door_text)
-		ft_error_message("Error: door texture encountered");
-	cube->data->door_image_text = mlx_texture_to_image \
+	cube->data->door_text = my_mlx_load_png("door/1.png");
+	cube->data->door_image_text = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->door_text);
-	if (!cube->data->door_image_text)
-		ft_error_message("Error: door texture encountered");
 }
 
 void	normalize_vect(double *x, double *y)
