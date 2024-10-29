@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/27 16:05:17 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:08:24 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	render_3d(void *param)
 
 	x = -1;
 	cube = (t_cube *)param;
-	ray = cube->player->angle - (FOV_ANGLE / 2);
+	ray = cube->player->angle - (cube->fov_angle / 2);
 	while (++x < SCREEN_WIDTH)
 	{
 		ray = normalize_angle(ray);
@@ -41,7 +41,7 @@ void	render_3d(void *param)
 		1 && (cube->ray[x].x = cube->hit->x, cube->ray[x].y = cube->hit->y);
 		cube->ray[x].angle = ray;
 		render_wall(cube, x, ray);
-		ray += FOV_ANGLE / SCREEN_WIDTH;
+		ray += cube->fov_angle / SCREEN_WIDTH;
 	}
 }
 

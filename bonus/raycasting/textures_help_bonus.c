@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:58 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 14:57:24 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:27:15 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ mlx_image_t	*find_texture(t_cube *cube)
 
 void	calculate_tex_pos(t_cube *cube, mlx_image_t *tex, double w_h, int f_y)
 {
+	int		i;
+	
 	if (w_h > 0)
 		cube->data->step = (double)tex->height / w_h;
 	else
 		cube->data->step = 0;
-	cube->data->text_pos = (f_y - (SCREEN_HEIGHT / 2 - w_h / 2)) \
-		* cube->data->step;
+	i = SCREEN_HEIGHT / 2 - w_h / 2;
+	cube->data->text_pos = (f_y - i) * cube->data->step;
 }
 
 void	sel_calculate_texture(t_cube *cube, mlx_image_t *current_tex)

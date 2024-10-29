@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/28 17:06:26 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:09:14 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <math.h>
 # include "MLX42.h"
 
-# define FOV_ANGLE (60 * (M_PI / 180))
 # define TILE_SIZE 50
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 609
@@ -127,6 +126,7 @@ typedef struct s_cube
 	t_data			*data;
 	t_ray			*ray;
 	int				cursor_hidden;
+	double			fov_angle;
 }					t_cube;
 
 // ***************************

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:22 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 16:18:07 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:04:36 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	cal_wall_dimen(t_cube *cube, int *from_y, int *to_y, double *w_height)
 {
 	double	base_distance;
 
-	base_distance = (SCREEN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+	base_distance = (SCREEN_WIDTH / 2) / tan(cube->fov_angle / 2);
 	*w_height = (TILE_SIZE / cube->ray->dis) * base_distance;
 	*from_y = (SCREEN_HEIGHT / 2) - (*w_height / 2);
 	*to_y = *from_y + *w_height;
@@ -93,6 +93,7 @@ int	data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray)
 	cube->player = player;
 	cube->data->shift = 0;
 	cube->player->angle = -1 * M_PI / 2;
+	cube->fov_angle = 60 * M_PI / 180;
 	if (mlx_data_init(cube))
 		return (1);
 	return (0);
