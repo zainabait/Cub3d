@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:05:27 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/29 16:52:25 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:23:11 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ int	data_init(t_cube *cube, t_player *player, t_inter *hit, t_ray *ray)
 	cube->hit = hit;
 	cube->ray = ray;
 	cube->player = player;
-	cube->player->angle = -1 * M_PI / 2;
+	cube->player->angle = update_angle(cube);
 	cube->fov_angle = 60 * (M_PI / 180);
+	cube->cursor_hidden = 0;
 	if (mlx_data_init(cube))
 		return (1);
 	return (0);

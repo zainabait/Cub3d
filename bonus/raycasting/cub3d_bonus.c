@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:31:42 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/31 15:39:05 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:47:07 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,9 @@ int	main(int ac, char **av)
 	cube.data = ft_parsing(av);
 	if (data_init(&cube, &player, &hit, ray))
 		return (1);
-	cube.cursor_hidden = 0;
 	load_textures(&cube);
 	initialize_position(cube.data, &cube.player->x, &cube.player->y);
 	load_sprite_textures(&cube);
-	cube.data->fram = 0;
 	mlx_loop_hook(cube.mlx, function, &cube);
 	mlx_cursor_hook(cube.mlx, ft_mouse, &cube);
 	mlx_key_hook(cube.mlx, handle_key_input, &cube);

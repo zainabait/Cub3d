@@ -11,6 +11,7 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
 						  ./mandatory/raycasting/utils.c \
 						  ./mandatory/raycasting/utils1.c \
 						  ./mandatory/raycasting/utils2.c \
+						  ./mandatory/raycasting/utils3.c \
 						  ./mandatory/raycasting/textures_help.c \
 						  ./mandatory/parsing/get_next_line.c \
 						  ./mandatory/parsing/get_next_line_utils.c \
@@ -23,7 +24,8 @@ SRCS					= ./mandatory/raycasting/cub3d.c \
                           ./mandatory/parsing/parsing_map2.c \
 						  ./mandatory/parsing/parsing_map3.c \
 						  ./mandatory/parsing/parsing_helpe3.c \
-						  ./mandatory/parsing/mohilloc.c 
+						  ./mandatory/parsing/mohilloc.c
+
 OBJS					= $(SRCS:.c=.o)
 
 BONUS					= ./bonus/raycasting/cub3d_bonus.c \
@@ -36,6 +38,7 @@ BONUS					= ./bonus/raycasting/cub3d_bonus.c \
 						  ./bonus/raycasting/utils2_bonus.c \
 						  ./bonus/raycasting/utils3_bonus.c\
 						  ./bonus/raycasting/utils4_bonus.c\
+						  ./bonus/raycasting/utils5_bonus.c\
 						  ./bonus/raycasting/minimap_bonus.c \
 						  ./bonus/raycasting/textures_help_bonus.c \
 						  ./bonus/parsing/get_next_line_bonus.c \

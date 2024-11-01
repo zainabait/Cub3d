@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/29 16:52:30 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:22:17 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,5 +209,6 @@ int				data_init(t_cube *cube, t_player *player, \
 mlx_texture_t	*my_mlx_load_png(char *path);
 mlx_image_t		*my_mlx_texture_to_image(void *mlx, mlx_texture_t *texture);
 t_cube			*get_cub(t_cube *cub);
-
+double			update_angle(t_cube *cube);
+void			exact_angle(t_cube *cube, int i, int j, double *angle);
 #endif
