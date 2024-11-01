@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:36 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 18:23:03 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 15:15:44 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ void	handle_key_input(mlx_key_data_t keydata, void *param)
 
 	cube = param;
 	if (keydata.key == MLX_KEY_ESCAPE)
-	{
-		(clear_spr(cube), clearheap(&cube->heap), mlx_close_window(cube->mlx));
-		return ;
-	}
+		return (clear_spr(cube), clearheap(&cube->heap),
+			mlx_close_window(cube->mlx));
 	else if (keydata.key == MLX_KEY_W)
 		cube->player->wd = 1;
 	else if (keydata.key == MLX_KEY_S)
@@ -97,7 +95,8 @@ void	handle_key_input(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_LEFT)
 		cube->player->td = -1;
 	if (keydata.key == MLX_KEY_R)
-		1 && (cube->data->fram = 0, cube->data->animt = 1);
+		1 && ((!cube->data->animt) && (cube->data->fram = 0),
+			cube->data->animt = 1);
 	if (keydata.key == MLX_KEY_O)
 		open_door(cube);
 	handle_key_release(keydata, cube);

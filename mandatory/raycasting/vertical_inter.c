@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical_inter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:51:23 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/22 15:10:35 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/01 11:31:26 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ t_inter	find_vertical_intersection(t_cube *cube, double angle)
 	t_inter	first_touch;
 	t_inter	next_step;
 
-	angle = normalize_angle(angle);
 	first_touch = calculate_first_touch(cube, angle);
 	next_step = calculate_next_step(angle);
 	return (wall_ver(cube, first_touch, next_step, angle));

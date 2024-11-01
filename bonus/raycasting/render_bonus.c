@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/29 16:05:31 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/31 16:05:18 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	render_3d(void *param)
 		cv = find_vertical_intersection(cube, ray);
 		ch = find_horizontal_intersection(cube, ray);
 		calculate_closest_ray(ch, cv, cube);
-		cube->ray[x].angle = ray;
 		normalize_door(cube);
 		render_wall(cube, x, ray);
 		ray += cube->fov_angle / SCREEN_WIDTH;
@@ -74,7 +73,7 @@ void	render_wall(t_cube *cube, double x, double ray)
 	cal_wall_dimen(cube, &from_y, &to_y, &wall_height);
 	cur_tex = find_texture(cube);
 	if (!cur_tex)
-		ft_error_message("Error: from textures");
+		ft_error_message("Error: No texture");
 	sel_calculate_texture(cube, cur_tex);
 	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
 	line_y.to = to_y;

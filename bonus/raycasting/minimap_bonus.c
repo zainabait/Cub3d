@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/27 21:09:56 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 15:18:25 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,30 +62,27 @@ void	render_minimap_tile(t_cube *cube, int i, int j)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (y <= TILE_SIZE / 4)
+	y = -1;
+	while (++y <= TILE_SIZE / 4)
 	{
-		x = 0;
-		while (x <= TILE_SIZE / 4)
+		x = -1;
+		while (++x <= TILE_SIZE / 4)
 		{
 			if (cube->data->map[j][i] == '1')
-				put_pixel_mini(cube->image,
-					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,
-					j * TILE_SIZE / 4 + y - cube->player->y / 4 + 100,
-					0x71597F71);
+				put_pixel_mini(cube->image, i * TILE_SIZE / 4
+					+ x - cube->player->x / 4 + 100, j * TILE_SIZE / 4
+					+ y - cube->player->y / 4 + 100, 0x71597F71);
 			else if (cube->data->map[j][i] == 'D')
 				put_pixel_mini(cube->image,
 					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,
 					j * TILE_SIZE / 4 + y - cube->player->y / 4 + 100,
-					0xFF7F50FF);
+					0xcbcbcbcb);
 			else
 				put_pixel_mini(cube->image,
 					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,
 					j * TILE_SIZE / 4 + y - cube->player->y / 4 + 100,
 					0xF0D9FFF0);
-			x++;
 		}
-		y++;
 	}
 }
 

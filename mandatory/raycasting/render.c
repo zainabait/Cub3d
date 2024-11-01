@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:23:21 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/29 16:08:24 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:08:25 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	render_3d(void *param)
 		cv = find_vertical_intersection(cube, ray);
 		ch = find_horizontal_intersection(cube, ray);
 		calculate_closest_ray(ch, cv, cube);
-		1 && (cube->ray[x].x = cube->hit->x, cube->ray[x].y = cube->hit->y);
-		cube->ray[x].angle = ray;
 		render_wall(cube, x, ray);
 		ray += cube->fov_angle / SCREEN_WIDTH;
 	}

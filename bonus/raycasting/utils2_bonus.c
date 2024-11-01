@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:29 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 14:57:32 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 15:11:31 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	load_sprite_textures(t_cube *cube)
 	while (i < 100)
 	{
 		str = NULL;
-		str = ft_strjoin(str, "knif/");
+		str = ft_strjoin(str, "knife/");
 		tmp2 = ft_itoa(i + 1);
 		str = ft_strjoin(str, tmp2);
 		str = ft_strjoin(str, ".png");

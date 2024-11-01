@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_inter_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:00 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/26 20:50:54 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/31 17:27:45 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_inter	find_horizontal_intersection(t_cube *cube, double angle)
 	t_inter	first_touch;
 	t_inter	next_step;
 
-	angle = normalize_angle(angle);
 	first_touch = calculate_first_horizontal_touch(cube, angle);
 	next_step = calculate_next_horizontal_step(angle);
 	return (wall_hor(cube, first_touch, next_step, angle));

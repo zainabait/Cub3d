@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:17:24 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 20:00:08 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:12:44 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,11 @@ mlx_image_t	*my_mlx_texture_to_image(void *mlx, mlx_texture_t *texture)
 
 void	ft_close(void *param)
 {
-    t_cube *cube = (t_cube *)param;
-    clear_spr(cube);
-    clearheap(&cube->heap);
-    mlx_close_window(cube->mlx);
-    exit(0);
+	t_cube	*cube;
+
+	cube = (t_cube *)param;
+	clear_spr(cube);
+	clearheap(&cube->heap);
+	mlx_close_window(cube->mlx);
+	exit(0);
 }

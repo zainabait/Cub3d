@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/10/29 16:09:24 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:52:30 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,6 @@ typedef struct s_data
 
 typedef struct rays
 {
-	double		x;
-	double		y;
-	double		angle;
 	double		dis;
 	bool		is_up;
 	bool		is_down;
