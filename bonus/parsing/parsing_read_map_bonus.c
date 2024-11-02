@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:38:53 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 15:51:50 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**get_map(char *file, int count)
 	fd = open(file, O_RDWR);
 	if (fd < 0)
 		ft_error_message("Error: from fd!");
-	map = (char **)talloc(sizeof(char *) * (count + 1));
+	map = (char **)mohi_bel_malloc(sizeof(char *) * (count + 1));
 	line = get_next_line(fd);
 	while (line)
 	{

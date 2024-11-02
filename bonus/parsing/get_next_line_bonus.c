@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:39:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:19:56 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX
 		|| fd >= OPEN_MAX)
 		return (free (rest), rest = NULL, NULL);
-	buffer = talloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = mohi_bel_malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (free (rest), rest = NULL, NULL);
 	buffer[0] = 0;

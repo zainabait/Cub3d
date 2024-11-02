@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:26:56 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:47:10 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ char	*char_of_spaces(int len)
 	int		i;
 
 	i = 0;
-	str = talloc(len + 1);
+	str = mohi_bel_malloc(len + 1);
 	if (!str)
-		ft_error_message("Error: from talloc!!");
+		ft_error_message("Error: from mohi_bel_malloc!!");
 	while (i < len)
 	{
 		str[i] = ' ';
@@ -78,9 +78,9 @@ char	**get_map_filled_with_spaces(char **file, t_data *args)
 	1 && (i = 0, map = NULL);
 	args->width = get_longest_line(file);
 	args->height = get_size_of_map(file);
-	map = talloc(sizeof(char *) * (args->height + 1));
+	map = mohi_bel_malloc(sizeof(char *) * (args->height + 1));
 	if (!map)
-		ft_error_message("Error: from talloc!!");
+		ft_error_message("Error: from mohi_bel_malloc!!");
 	while (i < args->height)
 	{
 		spaces = char_of_spaces(args->width - ft_strlen(file[i]));

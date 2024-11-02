@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:01 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 15:51:07 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_cube	*get_cub(t_cube *cub)
 	return (cub_s);
 }
 
-void	*talloc(size_t __size)
+void	*mohi_bel_malloc(size_t __size)
 {
 	void	*__ptr;
 	t_heap	*__node;

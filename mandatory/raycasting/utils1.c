@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:05:27 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/01 16:23:11 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/01 18:46:32 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	ft_mouse(double xpos, double ypos, void *param)
 	cub = (t_cube *)param;
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
 	if (cub->cursor_hidden && cub->player->prev_x > xpos)
-		cub->player->angle -= fabs(cub->player->prev_x - xpos) * 0.004;
+		cub->player->angle -= fabs(cub->player->prev_x - xpos) / SCREEN_HEIGHT;
 	else if (cub->cursor_hidden && cub->player->prev_x < xpos)
-		cub->player->angle += fabs(cub->player->prev_x - xpos) * 0.004;
+		cub->player->angle += fabs(cub->player->prev_x - xpos) / SCREEN_HEIGHT;
 	cub->player->prev_x = xpos;
 }
 

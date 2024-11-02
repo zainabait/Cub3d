@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:15 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/24 10:50:49 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data	*ft_parsing(char **av)
 	char	**file;
 	int		i;
 
-	args = talloc(sizeof(t_data));
+	args = mohi_bel_malloc(sizeof(t_data));
 	i = 0;
 	check_file_isvalid(av[1]);
 	file = ft_read_map(av[1]);
