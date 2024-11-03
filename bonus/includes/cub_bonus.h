@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:09:37 by zait-bel          #+#    #+#             */
-/*   Updated: 2024/11/02 20:44:49 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:10:37 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void			valid_element(t_data *arg, int i, int j);
 /*-----------garbege collecter---------------*/
 t_cube			*get_cub(t_cube *cub);
 void			clearheap(t_heap **node);
-void			*talloc(size_t __size);
+void			*mohi_bel_malloc(size_t __size);
 
 /*-----------raycasting---------------*/
 void			render_3d(void *param);

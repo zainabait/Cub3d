@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:17 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:20:14 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	wi = 0;
 	wc = ft_countword(s, c);
-	words = (char **)talloc (sizeof(char *) * (wc + 1));
+	words = (char **)mohi_bel_malloc (sizeof(char *) * (wc + 1));
 	if (words == NULL)
 		return (NULL);
 	while (wi < wc)

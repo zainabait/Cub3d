@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:02:52 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:46:42 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	if (!s1)
 		return (ft_strdup(s2));
-	result = (char *) talloc((ft_strlen(s1) + ft_strlen(s2) + 1));
+	result = (char *) mohi_bel_malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
 	while (s1[i] != '\0')
 		result[j++] = s1[i++];
 	i = 0;
@@ -53,7 +53,7 @@ char	*ft_strdup(const char *src)
 	size_t	i;
 
 	len = ft_strlen(src);
-	dst = talloc(sizeof(char) * (len + 1));
+	dst = mohi_bel_malloc(sizeof(char) * (len + 1));
 	if (!dst)
 		return (NULL);
 	i = 0;
@@ -77,7 +77,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
-	str = (char *) talloc(sizeof(char) * (len + 1));
+	str = (char *) mohi_bel_malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

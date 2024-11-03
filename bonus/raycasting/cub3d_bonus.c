@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:31:42 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/01 15:47:07 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:17:57 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	function(void *param)
 	t_cube	*cube;
 
 	cube = (t_cube *) param;
-	ft_close_door(cube);
 	ft_clear_image(cube->image);
+	ft_close_door(cube);
 	move_player(cube);
 	render_3d(cube);
 	ft_animation(cube);

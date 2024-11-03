@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:05:13 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:46:45 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX
 		|| fd >= OPEN_MAX)
 		return (free (rest), rest = NULL, NULL);
-	buffer = talloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = mohi_bel_malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (free (rest), rest = NULL, NULL);
 	buffer[0] = 0;

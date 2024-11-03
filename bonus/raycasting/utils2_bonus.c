@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:29 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/29 15:11:31 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/02 23:09:44 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	ft_animation(t_cube *cub)
 	if (i % 2 == 0)
 	{
 		mlx_delete_image(cub->mlx, cub->data->tp);
-		cub->data->tp = mlx_texture_to_image \
-			(cub->mlx, cub->data->s_sprite[cub->data->fram]);
+		cub->data->tp = mlx_texture_to_image(cub->mlx, \
+			cub->data->s_sprite[cub->data->fram]);
 		mlx_image_to_window(cub->mlx, cub->data->tp, 0, 0);
 		if (!cub->data->animt)
 			cub->data->fram = 0;

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:12:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 14:56:07 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 23:07:37 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,11 @@ void	clear_spr(t_cube *cube)
 	int	i;
 
 	i = 0;
-	while (i < 100)
+	while (cube->data && i < 100)
 	{
 		free(cube->data->s_sprite[i]->pixels);
 		free(cube->data->s_sprite[i]);
 		i++;
 	}
+	exit(0);
 }

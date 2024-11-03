@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:58 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/28 14:57:24 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/02 15:47:33 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,16 @@ mlx_image_t	*find_texture(t_cube *cube)
 	return (txt);
 }
 
+void	sel_calculate_texture(t_cube *cube, mlx_image_t *current_tex)
+{
+	if (!cube->hit->ver_hit)
+		cube->data->text_x = (int)(cube->hit->x * current_tex->width \
+			/ TILE_SIZE) % current_tex->width;
+	else
+		cube->data->text_x = (int)(cube->hit->y * current_tex->width \
+			/ TILE_SIZE) % current_tex->width;
+}
+
 void	calculate_tex_pos(t_cube *cube, mlx_image_t *tex, double w_h, int f_y)
 {
 	if (w_h > 0)
@@ -66,16 +76,6 @@ void	calculate_tex_pos(t_cube *cube, mlx_image_t *tex, double w_h, int f_y)
 		cube->data->step = 0;
 	cube->data->text_pos = (f_y - (SCREEN_HEIGHT / 2 - w_h / 2)) \
 		* cube->data->step;
-}
-
-void	sel_calculate_texture(t_cube *cube, mlx_image_t *current_tex)
-{
-	if (!cube->hit->ver_hit)
-		cube->data->text_x = (int)(cube->hit->x * current_tex->width \
-			/ TILE_SIZE) % current_tex->width;
-	else
-		cube->data->text_x = (int)(cube->hit->y * \
-		current_tex->height / TILE_SIZE) % current_tex->height;
 }
 
 void	load_textures(t_cube *cube)
