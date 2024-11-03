@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:22 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/01 15:47:24 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/01 19:07:21 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,17 @@ void	cal_wall_dimen(t_cube *cube, int *from_y, int *to_y, double *w_height)
 
 void	ft_mouse(double xpos, double ypos, void *param)
 {
-	t_cube			*cub;
-	static double	prev_x;
+	t_cube	*cub;
 
+	(void)ypos;
 	cub = (t_cube *)param;
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
-	if (cub->cursor_hidden && prev_x > xpos)
-		cub->player->angle -= fabs(prev_x - xpos) / SCREEN_HEIGHT;
-	else if (cub->cursor_hidden && prev_x < xpos)
-		cub->player->angle += fabs(prev_x - xpos) / SCREEN_HEIGHT;
-	if (cub->cursor_hidden)
-		cub->data->shift = (ypos - SCREEN_HEIGHT / 2) * 0.2;
-	prev_x = xpos;
+	if (cub->cursor_hidden == 1)
+		mlx_set_mouse_pos(cub->mlx, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	if (cub->cursor_hidden && SCREEN_WIDTH / 2 > xpos)
+		cub->player->angle -= fabs(SCREEN_WIDTH / 2 - xpos) * 0.004;
+	else if (cub->cursor_hidden && SCREEN_WIDTH / 2 < xpos)
+		cub->player->angle += fabs(SCREEN_WIDTH / 2 - xpos) * 0.004;
 }
 
 int	mlx_data_init(t_cube *cube)
