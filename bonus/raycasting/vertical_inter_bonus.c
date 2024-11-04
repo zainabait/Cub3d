@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:46 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/31 17:27:38 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:09:08 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	bresenham_line_mini(t_line_y line_x, t_line_y line_y, t_cube *cub)
 	1 && (pos[0] = line_x.from, pos[1] = line_y.from);
 	while (pos[0] != line_x.to || pos[1] != line_y.to)
 	{
-		put_pixel_mini(cub->image, pos[0], pos[1], 0xFFFFFFFF);
+		put_pixel_mini(cub->image, pos[0], pos[1], 0xC9E2BFE2);
 		err[1] = 2 * err[0];
 		if (err[1] > -dif[1])
 		{

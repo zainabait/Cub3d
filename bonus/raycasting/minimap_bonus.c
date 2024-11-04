@@ -6,7 +6,7 @@
 /*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/29 15:18:25 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:12:30 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	render_minimap_background(t_cube *cube)
 	size_t	i;
 
 	j = 0;
-	while (j < cube->data->height * TILE_SIZE)
+	while (j < 200)
 	{
 		i = 0;
-		while (i < cube->data->width * TILE_SIZE)
+		while (i < 200)
 		{
 			put_pixel_mini(cube->image, i, j, 0x1f1f1f);
 			i++;
@@ -45,13 +45,13 @@ void	render_player_view(t_cube *cube)
 	t_line_y	line_y;
 	t_line_y	line_x;
 
-	a = -0.05;
-	while (a < 0.05)
+	a = -0.3;
+	while (a < 0.3)
 	{
 		line_y.from = 100;
-		line_y.to = 100 + 200 * sin(cube->player->angle + a);
+		line_y.to = 100 + 20 * sin(cube->player->angle + a);
 		line_x.from = 100;
-		line_x.to = 100 + 200 * cos(cube->player->angle + a);
+		line_x.to = 100 + 20 * cos(cube->player->angle + a);
 		bresenham_line_mini(line_x, line_y, cube);
 		a += 0.005;
 	}
@@ -76,7 +76,7 @@ void	render_minimap_tile(t_cube *cube, int i, int j)
 				put_pixel_mini(cube->image,
 					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,
 					j * TILE_SIZE / 4 + y - cube->player->y / 4 + 100,
-					0xcbcbcbcb);
+					0x999999FF);
 			else
 				put_pixel_mini(cube->image,
 					i * TILE_SIZE / 4 + x - cube->player->x / 4 + 100,

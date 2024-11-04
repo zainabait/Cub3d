@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:36 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:08:03 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/04 14:54:23 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_player(void *param)
 		x = -2;
 		while (x <= 2)
 		{
-			put_pixel_mini(cube->image, 100 + x,
+			put_pixel_safe(cube->image, 100 + x,
 				100 + y, 0xD1C7D7D1);
 			x++;
 		}
