@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_helpe1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:51:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:46:52 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/04 20:47:00 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ int	ft_atoi(const char *str)
 	int		i;
 	int		s;
 	long	r;
-	char	*tmp;
 
 	(1) && (i = 0, s = 1, r = 0);
-	tmp = ft_strtrim(str, " ");
-	if (tmp[i] == '-' || tmp[i] == '+')
-		if (tmp[i++] == '-')
+	if (str[i] == 32)
+		ft_error_message("Error: Invalid color!!");
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
 			s *= -1;
-	while (tmp[i])
+	while (str[i])
 	{
-		r = r * 10 + (tmp[i] - 48);
+		r = r * 10 + (str[i] - 48);
 		if ((r * s > 2147483647) || (r * s < -2147483648)
-			|| (tmp[i] < '0' || tmp[i] > '9'))
+			|| (str[i] < '0' || str[i] > '9'))
 			ft_error_message("Error: Invalid color!!");
 		i++;
 	}
