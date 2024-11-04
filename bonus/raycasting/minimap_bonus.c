@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:14 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/29 15:18:25 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:01:21 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	render_minimap_background(t_cube *cube)
 	size_t	i;
 
 	j = 0;
-	while (j < cube->data->height * TILE_SIZE)
+	while (j < 200)
 	{
 		i = 0;
-		while (i < cube->data->width * TILE_SIZE)
+		while (i < 200)
 		{
 			put_pixel_mini(cube->image, i, j, 0x1f1f1f);
 			i++;

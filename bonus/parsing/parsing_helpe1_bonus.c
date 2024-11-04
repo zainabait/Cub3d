@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:09 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:20:10 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/04 20:46:11 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ int	ft_atoi(const char *str)
 	int		i;
 	int		s;
 	long	r;
-	char	*tmp;
 
 	(1) && (i = 0, s = 1, r = 0);
-	tmp = ft_strtrim(str, " ");
-	if (tmp[i] == '-' || tmp[i] == '+')
-		if (tmp[i++] == '-')
+	if (str[i] == 32)
+		ft_error_message("Error: Invalid color!!");
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
 			s *= -1;
-	while (tmp[i])
+	while (str[i])
 	{
-		r = r * 10 + (tmp[i] - 48);
+		r = r * 10 + (str[i] - 48);
 		if ((r * s > 2147483647) || (r * s < -2147483648)
-			|| (tmp[i] < '0' || tmp[i] > '9'))
+			|| (str[i] < '0' || str[i] > '9'))
 			ft_error_message("Error: Invalid color!!");
 		i++;
 	}
