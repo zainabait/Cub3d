@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:05:13 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:26:21 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ivalid_lelement(char *str)
 	while (str[i])
 	{
 		if (str[i] != ' ')
-			ft_error_message("Error: Invalid element!!");
+			ft_error_message("Error:\nInvalid element!!");
 		i++;
 	}
 }

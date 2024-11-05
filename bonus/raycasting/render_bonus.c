@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/04 19:56:56 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:23:52 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	render_wall(t_cube *cube, double x, double ray)
 	cal_wall_dimen(cube, &from_y, &to_y, &wall_height);
 	cur_tex = find_texture(cube);
 	if (!cur_tex)
-		ft_error_message("Error: No texture");
+		ft_error_message("Error:\nTexture not found!!");
 	sel_calculate_texture(cube, cur_tex);
 	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
 	line_y.to = to_y;

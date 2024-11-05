@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:33:29 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:09:44 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:24:40 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	load_sprite_textures(t_cube *cube)
 		str = ft_strjoin(str, ".png");
 		cube->data->s_sprite[i] = mlx_load_png(str);
 		if (!cube->data->s_sprite[i])
-			ft_error_message("Error: sprite texture encountered");
+			ft_error_message("Error:\nsprite texture encountered");
 		i++;
 	}
 }

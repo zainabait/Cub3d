@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 11:29:57 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:26:44 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ void	*mohi_bel_malloc(size_t __size)
 	if (__ptr == NULL)
 	{
 		clearheap(&__cub->heap);
-		ft_error_message("Error: malloc failed");
+		ft_error_message("Error:\nmalloc failed");
 	}
 	__node = heap_new(__ptr);
 	if (!__node)
 	{
 		free(__ptr);
 		clearheap(&__cub->heap);
-		ft_error_message("Error: malloc failed");
+		ft_error_message("Error:\nmalloc failed");
 	}
 	heap_addback(&__cub->heap, __node);
 	return (__ptr);

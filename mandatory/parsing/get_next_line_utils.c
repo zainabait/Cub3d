@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:02:52 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:26:08 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ char	*ft_strdup(const char *src)
 
 	len = ft_strlen(src);
 	dst = mohi_bel_malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
 	i = 0;
 	while (i < len)
 	{
@@ -78,8 +76,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
 	str = (char *) mohi_bel_malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
 	while (i < len)
 	{

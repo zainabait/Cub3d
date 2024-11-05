@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:26:56 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:28:52 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_first_line(char *line)
 	while (line[i])
 	{
 		if (line[i] != '1' && line[i] != ' ')
-			ft_error_message("Error: Invalid map!!");
+			ft_error_message("Error:\nInvalid map!!");
 		i++;
 	}
 }
@@ -58,8 +58,6 @@ char	*char_of_spaces(int len)
 
 	i = 0;
 	str = mohi_bel_malloc(len + 1);
-	if (!str)
-		ft_error_message("Error: from mohi_bel_malloc!!");
 	while (i < len)
 	{
 		str[i] = ' ';
@@ -79,8 +77,6 @@ char	**get_map_filled_with_spaces(char **file, t_data *args)
 	args->width = get_longest_line(file);
 	args->height = get_size_of_map(file);
 	map = mohi_bel_malloc(sizeof(char *) * (args->height + 1));
-	if (!map)
-		ft_error_message("Error: from mohi_bel_malloc!!");
 	while (i < args->height)
 	{
 		spaces = char_of_spaces(args->width - ft_strlen(file[i]));

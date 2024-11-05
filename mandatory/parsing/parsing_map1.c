@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:19:13 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/18 11:43:57 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:28:20 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	first_last_char(t_data *arg)
 		j = 1;
 		if (arg->map[i][0] == '0' \
 			||arg->map[i][ft_strlen(arg->map[i]) - 1] == '0')
-			ft_error_message("Error: Invalid map!!");
+			ft_error_message("Error:\nInvalid map!!");
 		while (arg->map[i][j])
 		{
 			if (arg->map[i][j] == '0' || arg->map[i][j] == 'W' \
@@ -33,7 +33,7 @@ void	first_last_char(t_data *arg)
 			{
 				if (arg->map[i][j - 1] == ' ' || arg->map[i][j + 1] == ' ' \
 	|| arg->map[i - 1][j] == ' ' || arg->map[i + 1][j] == ' ')
-					ft_error_message("Error: Invalid map!!");
+					ft_error_message("Error:\nInvalid map!!");
 			}
 			j++;
 		}
@@ -80,7 +80,7 @@ static void	check_empty_line_inside_map(char **file)
 			while (file[i] && check_line_is_empty(file[i]))
 				i++;
 			if (file[i])
-				ft_error_message("Error: Invalid map!!");
+				ft_error_message("Error:\nInvalid map!!");
 		}
 		if (file[i])
 			i++;
@@ -96,7 +96,7 @@ void	check_map(char **file, t_data *args)
 	while (file[i] && check_line_is_empty(file[i]))
 		i++;
 	if (!file[i])
-		ft_error_message("Error: Invalid map!!");
+		ft_error_message("Error:\nInvalid map!!");
 	check_empty_line_inside_map(file + i);
 	check_first_line(file[i]);
 	check_first_line(check_last_line(file + i));

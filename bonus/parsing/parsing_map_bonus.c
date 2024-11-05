@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:31 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 10:20:22 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:21:32 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	process_texture(char **texture, char *file, char *prefix)
 	while (tmp[i])
 	{
 		if (tmp[i] == '\t')
-			ft_error_message("Error: Invalid texture!!");
+			ft_error_message("Error:\nInvalid texture!!");
 		i++;
 	}
 	line = ft_strtrim(tmp, " ");
@@ -59,7 +59,7 @@ void	get_textures(t_data *args, char **file, int *i)
 	else if (!args->ea && !ft_strncmp(file[*i], "EA", 2))
 		process_texture(&args->ea, file[*i], "EA");
 	else
-		ft_error_message("Error: duplicate texture!!");
+		ft_error_message("Error:\nduplicate texture!!");
 }
 
 void	get_color(t_data *args, char **file, int *i)
@@ -78,11 +78,11 @@ void	get_color(t_data *args, char **file, int *i)
 	ft_count_comma(line + k);
 	tmp2 = ft_split(line + k, ',');
 	if (!tmp2)
-		ft_error_message("Error: from split!!");
+		ft_error_message("Error:\nfrom split!!");
 	while (tmp2[a])
 		is_num(tmp2[a++]);
 	if (a != 3)
-		ft_error_message("Error: Invalid color!!");
+		ft_error_message("Error:\nInvalid color!!");
 	assign_color(args, line, tmp2);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:24 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/22 16:10:49 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:16:06 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	assign_color(t_data *args, char *line, char **tmp2)
 		ft_atoi(tmp2[1]), ft_atoi(tmp2[2]));
 	}
 	else
-		ft_error_message("Error: duplicate color!!");
+		ft_error_message("Error:\nduplicate color!!");
 }
 
 void	check_map_round_byones(t_data *args)
@@ -52,6 +52,6 @@ void	check_map_round_byones(t_data *args)
 		while (len >= 0 && args->map[i][len] == ' ')
 			len--;
 		if (args->map[i][j] != '1' || args->map[i][len] != '1')
-			ft_error_message("Error: map is not closed by '1'!!");
+			ft_error_message("Error:\nmap is not closed by '1'!!");
 	}
 }

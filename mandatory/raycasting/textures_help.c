@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:43:23 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/03 18:41:02 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/04 23:52:42 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	sel_calculate_texture(t_cube *cube, mlx_image_t *current_tex)
 			/ TILE_SIZE) % current_tex->width;
 	else
 		cube->data->text_x = (int)(cube->hit->y * \
-		current_tex->height / TILE_SIZE) % current_tex->height;
+		current_tex->width / TILE_SIZE) % current_tex->width;
 }
 
 void	load_textures(t_cube *cube)

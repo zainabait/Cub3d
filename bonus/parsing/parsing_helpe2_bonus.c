@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:40:17 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:20:18 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_free_leak(char **str)
 
 	i = 0;
 	if (!str)
-		ft_error_message("Erorr: empty map!!");
+		ft_error_message("Erorr:\nempty map!!");
 	while (str[i])
 	{
 		free(str[i]);

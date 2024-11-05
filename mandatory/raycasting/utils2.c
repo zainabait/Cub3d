@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 10:37:23 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/29 16:14:19 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:31:27 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ mlx_texture_t	*my_mlx_load_png(char *path)
 
 	texture = mlx_load_png(path);
 	if (!texture)
-		ft_error_message("Error: texture encountered");
+		ft_error_message("Error:\ntexture encountered");
 	return (texture);
 }
 
@@ -28,7 +28,7 @@ mlx_image_t	*my_mlx_texture_to_image(void *mlx, mlx_texture_t *texture)
 
 	image = mlx_texture_to_image(mlx, texture);
 	if (!image)
-		ft_error_message("Error: 'No' texture encountered");
+		ft_error_message("Error:\nimage encountered");
 	mlx_delete_texture(texture);
 	return (image);
 }

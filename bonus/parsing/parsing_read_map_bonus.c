@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:38:53 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 23:13:42 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:12:50 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_file_isvalid(char *file)
 
 	tmp = file + ft_strlen(file) - 4;
 	if (ft_strcmp(tmp, ".cub"))
-		ft_error_message("Error : Invalid extension!!");
+		ft_error_message("Error:\nInvalid extension!!");
 }
 
 int	lines_lenght(int fd)
@@ -59,7 +59,7 @@ char	**get_map(char *file, int count)
 	1 && (i = 0, map = NULL);
 	fd = open(file, O_RDWR);
 	if (fd < 0)
-		ft_error_message("Error: from fd!");
+		ft_error_message("Error:\nfrom fd!");
 	map = (char **)mohi_bel_malloc(sizeof(char *) * (count + 1));
 	line = get_next_line(fd);
 	while (line)
@@ -83,11 +83,11 @@ char	**ft_read_map(char *file)
 	1 && (count = 0, map = NULL);
 	fd = open(file, O_RDWR);
 	if (fd < 0)
-		ft_error_message("Error: from fd!");
+		ft_error_message("Error:\nfrom fd!");
 	count = lines_lenght(fd);
 	close(fd);
 	map = get_map(file, count);
 	if (!map)
-		ft_error_message("Error: from get_map!");
+		ft_error_message("Error:\nfrom get_map!");
 	return (map);
 }

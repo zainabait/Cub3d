@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:05:27 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/03 18:11:07 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/04 23:39:03 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ int	mlx_data_init(t_cube *cube)
 	cube->image = mlx_new_image(cube->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!cube->image)
 	{
+		clearheap(&cube->heap);
 		mlx_close_window(cube->mlx);
 		mlx_strerror(mlx_errno);
 		return (1);
 	}
 	if (mlx_image_to_window(cube->mlx, cube->image, 0, 0) == -1)
 	{
+		clearheap(&cube->heap);
 		mlx_close_window(cube->mlx);
 		mlx_strerror(mlx_errno);
 		return (1);

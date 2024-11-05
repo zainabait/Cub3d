@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:02:15 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/02 17:38:01 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:22:46 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	check_valid_doors(t_data *arg)
 			{
 				if ((arg->map[i][j - 1] != '1' || arg->map[i][j + 1] != '1') \
 					&& (arg->map[i - 1][j] != '1' || arg->map[i + 1][j] != '1'))
-					ft_error_message("Error: Invalid door!!");
+					ft_error_message("Error:\nInvalid door!!");
 				else if ((arg->map[i][j - 1] == '1'
 					&& arg->map[i][j + 1] == '1')
 					&& (arg->map[i - 1][j] == '1' && arg->map[i + 1][j] == '1'))
-					ft_error_message("Error: Invalid door!!");
+					ft_error_message("Error:\nInvalid door!!");
 			}
 			j++;
 		}
@@ -48,6 +48,6 @@ void	valid_element(t_data *arg, int i, int j)
 	{
 		if (arg->map[i][j - 1] == ' ' || arg->map[i][j + 1] == ' ' \
 			|| arg->map[i - 1][j] == ' ' || arg->map[i + 1][j] == ' ')
-			ft_error_message("Error: Invalid map!!");
+			ft_error_message("Error:\nInvalid map!!");
 	}
 }

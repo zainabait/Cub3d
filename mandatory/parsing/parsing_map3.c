@@ -6,7 +6,7 @@
 /*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 20:42:24 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/15 02:45:38 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:29:22 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	is_num(char *str)
 	while (*str)
 	{
 		if (ft_atoi(str) < 0 || ft_atoi(str) > 255)
-			ft_error_message("Error: Invalid color!!");
+			ft_error_message("Error:\nInvalid color!!");
 		str++;
 	}
 }
@@ -38,9 +38,9 @@ void	init_data(t_data *args)
 void	check_params(t_data args)
 {
 	if (!args.no || !args.so || !args.we || !args.ea)
-		ft_error_message("Error: Missing texture!!");
+		ft_error_message("Error:\nMissing texture!!");
 	if (args.f_c == -1 || args.c_color == -1)
-		ft_error_message("Error: Missing color!!");
+		ft_error_message("Error:\nMissing color!!");
 }
 
 static void	check_valid_map(t_data *args)
@@ -59,7 +59,7 @@ static void	check_valid_map(t_data *args)
 				&& args->map[i][j] != 'S' && args->map[i][j] != 'W' \
 				&& args->map[i][j] != 'E' && args->map[i][j] != ' ')
 			{
-				ft_error_message("Error: Invalid map!!");
+				ft_error_message("Error:\nInvalid map!!");
 			}
 			j++;
 		}
@@ -87,6 +87,6 @@ void	check_elements(t_data *args)
 		i++;
 	}
 	if (count != 1)
-		ft_error_message("Error: Invalid number of players!!");
+		ft_error_message("Error:\nInvalid number of players!!");
 	check_valid_map(args);
 }

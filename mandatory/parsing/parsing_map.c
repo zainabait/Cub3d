@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:32:30 by mohimi            #+#    #+#             */
-/*   Updated: 2024/10/13 15:47:01 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:27:50 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_count_comma(char *line)
 		i++;
 	}
 	if (count != 2)
-		ft_error_message("Error: Invalid color!!");
+		ft_error_message("Error:\nInvalid color!!");
 }
 
 void	process_texture(char **texture, char *file, char *prefix)
@@ -41,7 +41,7 @@ void	process_texture(char **texture, char *file, char *prefix)
 	while (tmp[i])
 	{
 		if (tmp[i] == '\t')
-			ft_error_message("Error: Invalid texture!!");
+			ft_error_message("Error:\nInvalid texture!!");
 		i++;
 	}
 	line = ft_strtrim(tmp, " ");
@@ -59,7 +59,7 @@ void	get_textures(t_data *args, char **file, int *i)
 	else if (!args->ea && !ft_strncmp(file[*i], "EA", 2))
 		process_texture(&args->ea, file[*i], "EA");
 	else
-		ft_error_message("Error: duplicate texture!!");
+		ft_error_message("Error:\nduplicate texture!!");
 }
 
 void	get_color(t_data *args, char **file, int *i)
@@ -78,11 +78,11 @@ void	get_color(t_data *args, char **file, int *i)
 	ft_count_comma(line + k);
 	tmp2 = ft_split(line + k, ',');
 	if (!tmp2)
-		ft_error_message("Error: from split!!");
+		ft_error_message("Error:\nfrom split!!");
 	while (tmp2[a])
 		is_num(tmp2[a++]);
 	if (a != 3)
-		ft_error_message("Error: Invalid color!!");
+		ft_error_message("Error:\nInvalid color!!");
 	assign_color(args, line, tmp2);
 }
 
