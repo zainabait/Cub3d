@@ -1,4 +1,9 @@
-## cub3D
+<h1 align="center">Cub3d_42_1337 </h1>
+<p align="center">
+  <a href="https://github.com/zainabait/Cub3d">
+    <img src="https://raw.githubusercontent.com/zainabait/1337_badges/refs/heads/master/cub3dm.png?token=GHSAT0AAAAAACXP7UIWHMW5T2AVICT6NGPYZZQVJJA" alt="42 Badge">
+  </a>
+</p>
 
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use
 of basic algorithms, information research etc.
