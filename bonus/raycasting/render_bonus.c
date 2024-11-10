@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:32:47 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/06 09:58:57 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:52:27 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	render_3d(void *param)
 	render_minimap(cube);
 }
 
-void	shadow_help(t_line_y line_y, mlx_image_t *cur_tex, t_cube *cube, long x)
+void	draw_text(t_line_y line_y, mlx_image_t *cur_tex, t_cube *cube, long x)
 {
 	cube->ray->i = line_y.from;
 	while (cube->ray->i < line_y.to)
@@ -78,7 +78,7 @@ void	render_wall(t_cube *cube, double x, double ray)
 	calculate_tex_pos(cube, cur_tex, wall_height, from_y);
 	line_y.to = to_y;
 	line_y.from = from_y;
-	shadow_help(line_y, cur_tex, cube, x);
+	draw_text(line_y, cur_tex, cube, x);
 	line_y.to = 0;
 	line_y.from = from_y;
 	bresenham_line(x, line_y, cube, cube->data->c_color);

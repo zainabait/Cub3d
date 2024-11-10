@@ -1,5 +1,5 @@
 CC 						= cc 
-FLAGS                   = -Wall -Wextra -Werror -Imlx -Ofast #-g -fsanitize=address
+FLAGS                   = -Wall -Wextra -Werror -Imlx -Ofast
 NAME					= cub3D
 NAME_BONUS			    = cub3D_bonus
 
@@ -54,6 +54,7 @@ BONUS					= ./bonus/raycasting/cub3d_bonus.c \
 						  ./bonus/parsing/parsing_map4_bonus.c \
 						  ./bonus/parsing/parsing_helpe3_bonus.c \
 						  ./bonus/parsing/mohilloc_bonus.c
+
 OBJCS_BONUS				= $(BONUS:.c=.o)
 
 all						: $(NAME)
@@ -62,18 +63,21 @@ $(NAME)					: $(OBJS)
 						  @echo "\033[1;32mLinking $(NAME)...\033[0;m"
 						  $(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) -o $(NAME)
 
-bonus					: $(OBJCS_BONUS)
+bonus					: $(NAME_BONUS)
+
+$(NAME_BONUS)			: $(OBJCS_BONUS)
 						  @echo "\033[1;32mLinking $(NAME_BONUS)...\033[0;m"
 						  $(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJCS_BONUS) -o $(NAME_BONUS)
 
+
+bonus/%.o				: bonus/%.c bonus/includes/cub_bonus.h
+						  @echo "\033[0;34mCompiling $<...\033[0;m"
+						  $(CC) $(FLAGS) -c $< -o $@
 
 mandatory/%.o			: mandatory/%.c mandatory/includes/cub.h
 						  @echo "\033[0;34mCompiling $<...\033[0;m"
 						  $(CC) $(FLAGS) -c $< -o $@
 
-bonus/%.o				: bonus/%.c bonus/includes/cub_bonus.h 
-						  @echo "\033[0;34mCompiling $<...\033[0;m"
-						  $(CC) $(FLAGS) -c $< -o $@
 
 clean                   :
 						 @echo "\033[0;31mRemoving object files.\033[0;m"
@@ -106,4 +110,4 @@ fclean                  : clean
 						 @echo "\033[1;32mCleaning DONE ✅\033[0;m"
 
 re                      : fclean all
-.PHONY					: clean 
+.PHONY					: clean

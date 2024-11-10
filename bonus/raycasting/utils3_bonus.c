@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:12:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/06 09:59:13 by zait-bel         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:08:40 by mohimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@ void	ft_door_texture(t_cube *cube)
 	cube->data->door_text = my_mlx_load_png("door/1.png");
 	cube->data->door_image_text = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->door_text);
-}
-
-void	normalize_vect(double *x, double *y)
-{
-	double	len;
-
-	len = sqrt(*x * *x + *y * *y);
-	*x /= len;
-	*y /= len;
 }
 
 void	ft_east_west(t_cube *cube, double x)
@@ -51,7 +42,6 @@ void	normalize_door(t_cube *cube)
 
 	x = cube->hit->x - cube->player->x;
 	y = cube->hit->y - cube->player->y;
-	normalize_vect(&x, &y);
 	if (cube->hit->ver_hit == 1)
 		ft_east_west(cube, x);
 	else
