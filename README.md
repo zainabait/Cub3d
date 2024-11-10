@@ -8,7 +8,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=180&text=Hi,%20welcome%20to%20our%20cub3D!&fontSize=24&fontAlignY=32&animation=twinkling" alt="header" width="100%" />
 <samp>
 
-## About the project:
+## Goals:
 
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use
 of basic algorithms, information research etc.
