@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohimi <mohimi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zait-bel <zait-bel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:12:49 by mohimi            #+#    #+#             */
-/*   Updated: 2024/11/08 20:08:40 by mohimi           ###   ########.fr       */
+/*   Updated: 2024/11/11 13:11:10 by zait-bel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_door_texture(t_cube *cube)
 {
-	cube->data->door_text = my_mlx_load_png("door/1.png");
+	cube->data->door_text = my_mlx_load_png("door/2.png");
 	cube->data->door_image_text = my_mlx_texture_to_image \
 		(cube->mlx, cube->data->door_text);
 }
