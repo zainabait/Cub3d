@@ -104,6 +104,12 @@ Fisheye Effect - This effect distorts the view by rounding walls when real dista
 * A plane size of 0.66 is often ideal for FPS games.
 * Formula: Direction + Plane + Multiplier (-1 to 1)
 
+
+
+Uploading Screen Recording 2024-11-11 at 10.57.07 AM.mov…
+
+
+
 <img src="https://capsule-render.vercel.app/api?type=soft&color=timeGradient&height=30&section=footer" width="100%"/>
 
 ## Useful Resources Links:
