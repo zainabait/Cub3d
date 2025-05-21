@@ -1,7 +1,7 @@
 <h1 align="center">Cub3d_42_1337 </h1>
 <p align="center">
   <a href="https://github.com/zainabait/Cub3d">
-    <img src="https://raw.githubusercontent.com/mohimi-coder/1337_badges/refs/heads/master/cub3dm.png?token=GHSAT0AAAAAACXP7UIWHMW5T2AVICT6NGPYZZQVJJA" alt="42 Badge">
+  <img src="https://raw.githubusercontent.com/mohimi-coder/1337_badges/refs/heads/master/cub3dm.png" alt="42 Badge">
   </a>
 </p>
 
